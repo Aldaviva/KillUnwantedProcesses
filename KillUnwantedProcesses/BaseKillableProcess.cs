@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Management;
@@ -73,7 +72,7 @@ namespace KillUnwantedProcesses {
         }
 
         private static string StripExeSuffix(string processName) {
-            return Regex.Replace(processName, @"\.exe$", "");
+            return Regex.Replace(processName, @"\.exe$", string.Empty);
         }
 
         private static void SetServiceStartMode(string serviceName, ServiceStartMode startMode) {

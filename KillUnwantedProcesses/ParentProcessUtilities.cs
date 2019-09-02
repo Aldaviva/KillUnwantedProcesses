@@ -77,6 +77,7 @@ namespace KillUnwantedProcesses {
             return GetDescendentProcesses(parent, allProcesses).ToList(); //eagerly find child processes, because once we start killing processes, their parent PIDs won't mean anything anymore
         }
 
+        // ReSharper disable once ParameterTypeCanBeEnumerable.Local (Avoid double enumeration heuristic)
         private static IEnumerable<Process> GetDescendentProcesses(Process parent, IList<Process> allProcesses) {
             return allProcesses.SelectMany(descendent => {
                 bool isDescendentOfParent = false;

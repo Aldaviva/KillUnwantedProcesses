@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Linq;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
