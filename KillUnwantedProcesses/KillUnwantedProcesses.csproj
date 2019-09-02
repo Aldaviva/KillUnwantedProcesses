@@ -46,6 +46,7 @@
     <Compile Include="KillableProcesses\AdobeCreativeCloud.cs" />
     <Compile Include="BaseKillableProcess.cs" />
     <Compile Include="KillableProcesses\LogitechGHub.cs" />
+    <Compile Include="KillableProcesses\VisualStudio.cs" />
     <Compile Include="KillableProcesses\WindowsImageAcquisition.cs" />
     <Compile Include="ParentProcessUtilities.cs" />
     <Compile Include="KillableProcess.cs" />
