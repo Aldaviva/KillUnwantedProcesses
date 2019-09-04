@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace KillUnwantedProcesses {
+namespace KillUnwantedProcesses.Utilities {
 
     /// <summary>
     /// A utility class to determine a process parent.

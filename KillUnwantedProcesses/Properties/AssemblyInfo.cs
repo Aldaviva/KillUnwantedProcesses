@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("KillUnwantedProcesses")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ben's World")]
+[assembly: AssemblyCompany("Ben Hutchison")]
 [assembly: AssemblyProduct("KillUnwantedProcesses")]
-[assembly: AssemblyCopyright("Copyright © Ben's World 2019")]
+[assembly: AssemblyCopyright("Copyright © Ben Hutchison 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

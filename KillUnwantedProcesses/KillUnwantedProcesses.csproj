@@ -44,12 +44,15 @@
   <ItemGroup>
     <Compile Include="KillableProcesses\AdobeCollabSync.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloud.cs" />
-    <Compile Include="BaseKillableProcess.cs" />
+    <Compile Include="KillableProcesses\BaseKillableProcess.cs" />
     <Compile Include="KillableProcesses\LogitechGHub.cs" />
+    <Compile Include="KillableProcesses\OfficeDocumentCache.cs" />
+    <Compile Include="TaskHelpers\ProcessHelpers.cs" />
+    <Compile Include="TaskHelpers\ServiceHelpers.cs" />
     <Compile Include="KillableProcesses\VisualStudio.cs" />
     <Compile Include="KillableProcesses\WindowsImageAcquisition.cs" />
-    <Compile Include="ParentProcessUtilities.cs" />
-    <Compile Include="KillableProcess.cs" />
+    <Compile Include="Utilities\ParentProcessUtilities.cs" />
+    <Compile Include="KillableProcesses\KillableProcess.cs" />
     <Compile Include="KillableProcesses\NvidiaControlPanel.cs" />
     <Compile Include="UnwantedProcessKiller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

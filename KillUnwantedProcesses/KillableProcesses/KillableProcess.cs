@@ -1,4 +1,4 @@
-﻿namespace KillUnwantedProcesses {
+﻿namespace KillUnwantedProcesses.KillableProcesses {
 
     public abstract class KillableProcess {
 
