@@ -13,8 +13,11 @@ namespace KillUnwantedProcesses {
         }
 
         public UnwantedProcessKiller() {
+            killableProcesses.Add(new AdobeAcrobatUpdater());
             killableProcesses.Add(new AdobeCollabSync());
             killableProcesses.Add(new AdobeCreativeCloud());
+            killableProcesses.Add(new AdobeCreativeCloudUpdater());
+            killableProcesses.Add(new AdobeFlashUpdater());
             killableProcesses.Add(new LogitechGHub());
             killableProcesses.Add(new NvidiaControlPanel());
             killableProcesses.Add(new OfficeDocumentCache());

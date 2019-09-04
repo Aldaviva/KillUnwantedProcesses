@@ -45,7 +45,7 @@ namespace KillUnwantedProcesses.TaskHelpers {
         }
 
         private static string StripExeSuffix(string processName) {
-            return Regex.Replace(processName, @"\.exe$", string.Empty);
+            return Regex.Replace(processName, @"\.exe$", string.Empty, RegexOptions.IgnoreCase);
         }
 
     }

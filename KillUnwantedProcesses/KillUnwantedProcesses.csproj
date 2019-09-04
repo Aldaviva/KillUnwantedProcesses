@@ -42,6 +42,9 @@
     <Reference Include="System.ServiceProcess" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KillableProcesses\AdobeCreativeCloudUpdater.cs" />
+    <Compile Include="KillableProcesses\AdobeFlashUpdater.cs" />
+    <Compile Include="KillableProcesses\AdobeAcrobatUpdater.cs" />
     <Compile Include="KillableProcesses\AdobeCollabSync.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloud.cs" />
     <Compile Include="KillableProcesses\BaseKillableProcess.cs" />
