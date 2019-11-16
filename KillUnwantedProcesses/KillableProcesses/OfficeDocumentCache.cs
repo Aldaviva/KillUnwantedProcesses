@@ -2,17 +2,17 @@
 
     public class OfficeDocumentCache: BaseKillableProcess {
 
-        private const string ProcessName = "MSOSYNC";
+        private const string PROCESS_NAME = "MSOSYNC";
 
-        public override string Name { get; } = "Office Document Cache";
+        public override string name { get; } = "Office Document Cache";
 
-        public override bool ShouldKill() {
-            return IsProcessRunning(ProcessName) && !IsProcessRunning("EXCEL") && !IsProcessRunning("WINWORD") &&
-                   !IsProcessRunning("ONENOTE");
+        public override bool shouldKill() {
+            return isProcessRunning(PROCESS_NAME) && !isProcessRunning("EXCEL") && !isProcessRunning("WINWORD") &&
+                   !isProcessRunning("ONENOTE");
         }
 
-        public override void Kill() {
-            KillProcess(ProcessName);
+        public override void kill() {
+            killProcess(PROCESS_NAME);
         }
 
     }

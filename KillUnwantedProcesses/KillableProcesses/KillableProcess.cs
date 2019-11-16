@@ -2,11 +2,11 @@
 
     public abstract class KillableProcess {
 
-        public abstract string Name { get; }
+        public abstract string name { get; }
 
-        public abstract bool ShouldKill();
+        public abstract bool shouldKill();
 
-        public abstract void Kill();
+        public abstract void kill();
 
     }
 

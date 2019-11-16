@@ -2,11 +2,11 @@
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class AdobeCreativeCloudUpdater: BaseKillableProcess {
+    public class VmUsbArbService: BaseKillableProcess {
 
-        private const string SERVICE_NAME = "AdobeUpdateService";
+        private const string SERVICE_NAME = "VMUSBArbService";
 
-        public override string name { get; } = "Adobe Creative Cloud Updater";
+        public override string name { get; } = "VMware USB Arbitration Service";
 
         public override bool shouldKill() {
             return isServiceRunning(SERVICE_NAME);

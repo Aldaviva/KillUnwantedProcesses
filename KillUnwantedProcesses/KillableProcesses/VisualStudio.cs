@@ -2,16 +2,16 @@
 
     public class VisualStudio: BaseKillableProcess {
 
-        private const string ProcessName = "VBCSCompiler";
+        private const string PROCESS_NAME = "VBCSCompiler";
 
-        public override string Name { get; } = "Visual Studio Compiler";
+        public override string name { get; } = "Visual Studio Compiler";
 
-        public override bool ShouldKill() {
-            return IsProcessRunning(ProcessName) && !IsProcessRunning("devenv");
+        public override bool shouldKill() {
+            return isProcessRunning(PROCESS_NAME) && !isProcessRunning("devenv");
         }
 
-        public override void Kill() {
-            KillProcess(ProcessName);
+        public override void kill() {
+            killProcess(PROCESS_NAME);
         }
 
     }

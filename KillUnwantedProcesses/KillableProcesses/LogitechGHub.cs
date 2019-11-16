@@ -4,16 +4,16 @@ namespace KillUnwantedProcesses.KillableProcesses {
 
     public class LogitechGHub: BaseKillableProcess {
 
-        private const string ServiceName = "LGHUBUpdaterService";
+        private const string SERVICE_NAME = "LGHUBUpdaterService";
 
-        public override string Name { get; } = "Logitech G Hub";
+        public override string name { get; } = "Logitech G Hub";
 
-        public override bool ShouldKill() {
-            return IsServiceRunning(ServiceName) && !IsProcessRunning("lghub");
+        public override bool shouldKill() {
+            return isServiceRunning(SERVICE_NAME) && !isProcessRunning("lghub");
         }
 
-        public override void Kill() {
-            StopService(ServiceName, ServiceStartMode.Manual);
+        public override void kill() {
+            stopService(SERVICE_NAME, ServiceStartMode.Manual);
         }
 
     }

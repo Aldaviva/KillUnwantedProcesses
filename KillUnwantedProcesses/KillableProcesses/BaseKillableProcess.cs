@@ -5,20 +5,20 @@ namespace KillUnwantedProcesses.KillableProcesses {
 
     public abstract class BaseKillableProcess: KillableProcess {
 
-        protected static void KillProcess(string processName, bool alsoKillChildren = false) {
-            ProcessHelpers.KillProcess(processName, alsoKillChildren);
+        protected static void killProcess(string processName, bool alsoKillChildren = false) {
+            ProcessHelpers.killProcess(processName, alsoKillChildren);
         }
 
-        protected static bool IsProcessRunning(string processName) {
-            return ProcessHelpers.IsProcessRunning(processName);
+        protected static bool isProcessRunning(string processName) {
+            return ProcessHelpers.isProcessRunning(processName);
         }
 
-        protected static void StopService(string serviceName, ServiceStartMode? postKillServiceStartMode = null) { 
-            ServiceHelpers.StopService(serviceName, postKillServiceStartMode);
+        protected static void stopService(string serviceName, ServiceStartMode? postKillServiceStartMode = null) { 
+            ServiceHelpers.stopService(serviceName, postKillServiceStartMode);
         }
 
-        protected static bool IsServiceRunning(string serviceName) {
-            return ServiceHelpers.IsServiceRunning(serviceName);
+        protected static bool isServiceRunning(string serviceName) {
+            return ServiceHelpers.isServiceRunning(serviceName);
         }
     }
 

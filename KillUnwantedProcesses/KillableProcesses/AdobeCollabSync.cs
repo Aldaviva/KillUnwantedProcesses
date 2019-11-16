@@ -2,16 +2,16 @@
 
     public class AdobeCollabSync: BaseKillableProcess {
 
-        private const string ProcessName = "AdobeCollabSync";
+        private const string PROCESS_NAME = "AdobeCollabSync";
 
-        public override string Name { get; } = "Adobe Collaboration Synchronizer";
+        public override string name { get; } = "Adobe Collaboration Synchronizer";
 
-        public override bool ShouldKill() {
-            return !IsProcessRunning("Acrobat") && IsProcessRunning(ProcessName);
+        public override bool shouldKill() {
+            return !isProcessRunning("Acrobat") && isProcessRunning(PROCESS_NAME);
         }
 
-        public override void Kill() {
-            KillProcess(ProcessName, true);
+        public override void kill() {
+            killProcess(PROCESS_NAME, true);
         }
 
     }

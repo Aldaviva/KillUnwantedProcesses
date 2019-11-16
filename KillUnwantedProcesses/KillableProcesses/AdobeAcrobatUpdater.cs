@@ -4,16 +4,16 @@ namespace KillUnwantedProcesses.KillableProcesses {
 
     public class AdobeAcrobatUpdater: BaseKillableProcess {
 
-        private const string ServiceName = "AdobeARMservice";
+        private const string SERVICE_NAME = "AdobeARMservice";
 
-        public override string Name { get; } = "Adobe Acrobat Updater";
+        public override string name { get; } = "Adobe Acrobat Updater";
 
-        public override bool ShouldKill() {
-            return IsServiceRunning(ServiceName);
+        public override bool shouldKill() {
+            return isServiceRunning(SERVICE_NAME);
         }
 
-        public override void Kill() {
-            StopService(ServiceName, ServiceStartMode.Disabled);
+        public override void kill() {
+            stopService(SERVICE_NAME, ServiceStartMode.Disabled);
         }
 
     }

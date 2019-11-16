@@ -4,16 +4,16 @@ namespace KillUnwantedProcesses.KillableProcesses {
 
     public class WindowsImageAcquisition: BaseKillableProcess {
 
-        private const string ServiceName = "stisvc";
+        private const string SERVICE_NAME = "stisvc";
 
-        public override string Name { get; } = "Windows Image Acquisition";
+        public override string name { get; } = "Windows Image Acquisition";
 
-        public override bool ShouldKill() {
-            return IsServiceRunning(ServiceName);
+        public override bool shouldKill() {
+            return isServiceRunning(SERVICE_NAME);
         }
 
-        public override void Kill() {
-            StopService(ServiceName, ServiceStartMode.Manual);
+        public override void kill() {
+            stopService(SERVICE_NAME, ServiceStartMode.Manual);
         }
 
     }

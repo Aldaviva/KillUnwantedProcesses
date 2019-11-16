@@ -9,28 +9,36 @@ namespace KillUnwantedProcesses {
         private readonly ICollection<KillableProcess> killableProcesses = new HashSet<KillableProcess>();
 
         public static void Main() {
-            new UnwantedProcessKiller().KillUnwantedProcesses();
+            new UnwantedProcessKiller().killUnwantedProcesses();
         }
 
         public UnwantedProcessKiller() {
+            killableProcesses.Add(new AcroTray());
             killableProcesses.Add(new AdobeAcrobatUpdater());
             killableProcesses.Add(new AdobeCollabSync());
-            killableProcesses.Add(new AdobeCreativeCloud());
+            killableProcesses.Add(new AdobeCreativeCloudExperience());
             killableProcesses.Add(new AdobeCreativeCloudUpdater());
+            killableProcesses.Add(new AdobeDesktopService());
             killableProcesses.Add(new AdobeFlashUpdater());
+            killableProcesses.Add(new DotNetRuntimeOptimizationService());
             killableProcesses.Add(new LogitechGHub());
             killableProcesses.Add(new NvidiaControlPanel());
             killableProcesses.Add(new OfficeDocumentCache());
             killableProcesses.Add(new VirtualCloneDrive());
             killableProcesses.Add(new VisualStudio());
+            killableProcesses.Add(new VmAuthdService());
+            killableProcesses.Add(new VmnetDhcpService());
+            killableProcesses.Add(new VmUsbArbService());
+            killableProcesses.Add(new VmwareHostd());
+            killableProcesses.Add(new VmwareNatService());
             killableProcesses.Add(new WindowsImageAcquisition());
         }
 
-        public void KillUnwantedProcesses() {
-            foreach (KillableProcess killableProcess in killableProcesses) {
-                if (killableProcess.ShouldKill()) {
-                    Console.WriteLine($"Killing {killableProcess.Name}");
-                    killableProcess.Kill();
+        public void killUnwantedProcesses() {
+            foreach (KillableProcess processToKill in killableProcesses) {
+                if (processToKill.shouldKill()) {
+                    Console.WriteLine($"Killing {processToKill.name}");
+                    processToKill.kill();
                 }
             }
         }
