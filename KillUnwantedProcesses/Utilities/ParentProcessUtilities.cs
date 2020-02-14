@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -15,12 +17,12 @@ namespace KillUnwantedProcesses.Utilities {
     public struct ParentProcessUtilities {
 
         // These members must match PROCESS_BASIC_INFORMATION
-        internal IntPtr Reserved1;
-        internal IntPtr PebBaseAddress;
-        internal IntPtr Reserved2_0;
-        internal IntPtr Reserved2_1;
-        internal IntPtr UniqueProcessId;
-        internal IntPtr InheritedFromUniqueProcessId;
+        private readonly IntPtr Reserved1;
+        private readonly IntPtr PebBaseAddress;
+        private readonly IntPtr Reserved2_0;
+        private readonly IntPtr Reserved2_1;
+        private readonly IntPtr UniqueProcessId;
+        private readonly IntPtr InheritedFromUniqueProcessId;
 
         [DllImport("ntdll.dll")]
         private static extern int NtQueryInformationProcess(IntPtr processHandle, int processInformationClass,
@@ -30,7 +32,7 @@ namespace KillUnwantedProcesses.Utilities {
         /// Gets the parent process of the current process.
         /// </summary>
         /// <returns>An instance of the Process class.</returns>
-        public static Process getParentProcess() {
+        public static Process? getParentProcess() {
             return getParentProcess(Process.GetCurrentProcess());
         }
 
@@ -39,8 +41,8 @@ namespace KillUnwantedProcesses.Utilities {
         /// </summary>
         /// <param name="id">The process id.</param>
         /// <returns>An instance of the Process class.</returns>
-        public static Process getParentProcess(int id) {
-            Process process = Process.GetProcessById(id);
+        public static Process? getParentProcess(int id) {
+            var process = Process.GetProcessById(id);
             return getParentProcess(process);
         }
 
@@ -49,7 +51,7 @@ namespace KillUnwantedProcesses.Utilities {
         /// </summary>
         /// <param name="child">The child process.</param>
         /// <returns>An instance of the Process class.</returns>
-        public static Process getParentProcess(Process child) {
+        public static Process? getParentProcess(Process child) {
             return getParentProcess(child.Handle);
         }
 
@@ -58,7 +60,7 @@ namespace KillUnwantedProcesses.Utilities {
         /// </summary>
         /// <param name="handle">The process handle.</param>
         /// <returns>An instance of the Process class.</returns>
-        public static Process getParentProcess(IntPtr handle) {
+        private static Process? getParentProcess(IntPtr handle) {
             var pbi = new ParentProcessUtilities();
             int status = NtQueryInformationProcess(handle, 0, ref pbi, Marshal.SizeOf(pbi), out int _);
             if (status != 0)
@@ -74,7 +76,8 @@ namespace KillUnwantedProcesses.Utilities {
 
         public static IEnumerable<Process> getDescendentProcesses(Process parent) {
             IList<Process> allProcesses = Process.GetProcesses().AsEnumerable().ToList();
-            return getDescendentProcesses(parent, allProcesses).ToList(); //eagerly find child processes, because once we start killing processes, their parent PIDs won't mean anything anymore
+            return getDescendentProcesses(parent, allProcesses)
+                .ToList(); //eagerly find child processes, because once we start killing processes, their parent PIDs won't mean anything anymore
         }
 
         // ReSharper disable once ParameterTypeCanBeEnumerable.Local (Avoid double enumeration heuristic)
@@ -82,17 +85,15 @@ namespace KillUnwantedProcesses.Utilities {
             return allProcesses.SelectMany(descendent => {
                 bool isDescendentOfParent = false;
                 try {
-                    Process descendentParent = getParentProcess(descendent);
+                    Process? descendentParent = getParentProcess(descendent);
                     isDescendentOfParent = descendentParent?.Id == parent.Id;
                 } catch (Exception) {
-                    //leave descendentParent null
+                    //leave isDescendentOfParent false
                 }
 
-                if (isDescendentOfParent) {
-                    return getDescendentProcesses(descendent, allProcesses).Prepend(descendent);
-                } else {
-                    return Enumerable.Empty<Process>();
-                }
+                return isDescendentOfParent
+                    ? getDescendentProcesses(descendent, allProcesses).Prepend(descendent)
+                    : Enumerable.Empty<Process>();
             });
         }
 

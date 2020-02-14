@@ -12,7 +12,7 @@ namespace KillUnwantedProcesses {
             new UnwantedProcessKiller().killUnwantedProcesses();
         }
 
-        public UnwantedProcessKiller() {
+        private UnwantedProcessKiller() {
             killableProcesses.Add(new AcroTray());
             killableProcesses.Add(new AdobeAcrobatUpdater());
             killableProcesses.Add(new AdobeCollabSync());
@@ -34,7 +34,7 @@ namespace KillUnwantedProcesses {
             killableProcesses.Add(new WindowsImageAcquisition());
         }
 
-        public void killUnwantedProcesses() {
+        private void killUnwantedProcesses() {
             foreach (KillableProcess processToKill in killableProcesses) {
                 if (processToKill.shouldKill()) {
                     Console.WriteLine($"Killing {processToKill.name}");

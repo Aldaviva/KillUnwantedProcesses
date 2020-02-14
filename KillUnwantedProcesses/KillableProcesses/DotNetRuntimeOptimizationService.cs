@@ -31,7 +31,6 @@ namespace KillUnwantedProcesses.KillableProcesses {
                 while (resultsEnumerator.MoveNext()) {
                     serviceNameResults.Add((string) resultsEnumerator.Current.GetPropertyValue("Name"));
                 }
-
             }
 
             return serviceNameResults;

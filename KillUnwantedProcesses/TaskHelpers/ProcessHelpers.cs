@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -12,22 +14,21 @@ namespace KillUnwantedProcesses.TaskHelpers {
             processName = stripExeSuffix(processName);
             Process[] processesToKill = Process.GetProcessesByName(processName);
             foreach (Process processToKill in processesToKill) {
-                using (processToKill) {
-                    if (alsoKillChildren) {
-                        foreach (Process descendentToKill in ParentProcessUtilities.getDescendentProcesses(processToKill)) {
-                            try {
-                                killProcess(descendentToKill);
-                            } catch (Exception) {
-                                //probably already closed or can't be killed
-                            }
+                using Process kill = processToKill;
+                if (alsoKillChildren) {
+                    foreach (Process descendentToKill in ParentProcessUtilities.getDescendentProcesses(processToKill)) {
+                        try {
+                            killProcess(descendentToKill);
+                        } catch (Exception) {
+                            //probably already closed or can't be killed
                         }
                     }
+                }
 
-                    try {
-                        killProcess(processToKill);
-                    } catch (Exception) {
-                        //probably already closed or can't be killed
-                    }
+                try {
+                    killProcess(processToKill);
+                } catch (Exception) {
+                    //probably already closed or can't be killed
                 }
             }
         }
@@ -39,7 +40,7 @@ namespace KillUnwantedProcesses.TaskHelpers {
 
         public static bool isProcessRunning(string processName) {
             processName = stripExeSuffix(processName);
-            using Process process = Process.GetProcessesByName(processName).FirstOrDefault();
+            using Process? process = Process.GetProcessesByName(processName).FirstOrDefault();
             return process != null;
         }
 
