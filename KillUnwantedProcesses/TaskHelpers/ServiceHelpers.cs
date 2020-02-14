@@ -1,3 +1,5 @@
+#nullable enable
+
 using System;
 using System.Management;
 using System.ServiceProcess;
@@ -16,8 +18,7 @@ namespace KillUnwantedProcesses.TaskHelpers {
                     Console.WriteLine($"Setting start mode of service {serviceName} to {postKillServiceStartMode}");
                     setServiceStartMode(serviceName, postKillServiceStartMode.Value);
                 }
-
-            } catch (ArgumentException) {
+            } catch (Exception e) when (e is InvalidOperationException || e is ArgumentException) {
                 // Service does not exist, therefore it is not running and does not need to be stopped.
             }
         }
@@ -26,7 +27,7 @@ namespace KillUnwantedProcesses.TaskHelpers {
             try {
                 using var serviceController = new ServiceController(serviceName);
                 return serviceController.Status == ServiceControllerStatus.Running;
-            } catch (ArgumentException) {
+            } catch (Exception e) when (e is InvalidOperationException || e is ArgumentException) {
                 // Service does not exist, therefore it is not running.
                 return false;
             }
