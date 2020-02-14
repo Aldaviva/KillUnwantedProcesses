@@ -7,8 +7,12 @@
         public override string name { get; } = "Office Document Cache";
 
         public override bool shouldKill() {
-            return isProcessRunning(PROCESS_NAME) && !isProcessRunning("EXCEL") && !isProcessRunning("WINWORD") &&
-                   !isProcessRunning("ONENOTE");
+            return isProcessRunning(PROCESS_NAME) &&
+                   !isProcessRunning("EXCEL") &&
+                   !isProcessRunning("WINWORD") &&
+                   !isProcessRunning("ONENOTE") &&
+                   !isProcessRunning("POWERPNT.EXE") &&
+                   !isProcessRunning("OUTLOOK.EXE");
         }
 
         public override void kill() {
