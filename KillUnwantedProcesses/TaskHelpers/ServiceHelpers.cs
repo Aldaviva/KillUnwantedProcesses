@@ -33,6 +33,11 @@ namespace KillUnwantedProcesses.TaskHelpers {
             }
         }
 
+        internal static ServiceStartMode getServiceStartMode(string serviceName) {
+            using var serviceController = new ServiceController(serviceName);
+            return serviceController.StartType;
+        }
+
         private static void setServiceStartMode(string serviceName, ServiceStartMode startMode) {
             using ManagementObject wmiService = getWmiService(serviceName);
             ManagementBaseObject reqParams = wmiService.GetMethodParameters("ChangeStartMode");

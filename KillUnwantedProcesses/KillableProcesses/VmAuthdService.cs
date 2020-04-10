@@ -9,7 +9,7 @@ namespace KillUnwantedProcesses.KillableProcesses {
         public override string name { get; } = "VMware Authorization Service";
 
         public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME);
+            return isServiceRunning(SERVICE_NAME) && !isProcessRunning("vmware-vmx");
         }
 
         public override void kill() {
