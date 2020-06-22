@@ -43,6 +43,10 @@
   <PropertyGroup>
     <ApplicationIcon>dynamite.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,11 +56,13 @@
   <ItemGroup>
     <Compile Include="KillableProcesses\AcroTray.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudExperience.cs" />
+    <Compile Include="KillableProcesses\AdobeCreativeCloudLibraries.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudUpdater.cs" />
     <Compile Include="KillableProcesses\AdobeFlashUpdater.cs" />
     <Compile Include="KillableProcesses\AdobeAcrobatUpdater.cs" />
     <Compile Include="KillableProcesses\AdobeCollabSync.cs" />
     <Compile Include="KillableProcesses\AdobeDesktopService.cs" />
+    <Compile Include="KillableProcesses\AdobeNotificationClient.cs" />
     <Compile Include="KillableProcesses\BaseKillableProcess.cs" />
     <Compile Include="KillableProcesses\DotNetRuntimeOptimizationService.cs" />
     <Compile Include="KillableProcesses\LogitechGHub.cs" />
@@ -66,6 +72,8 @@
     <Compile Include="KillableProcesses\VmUsbArbService.cs" />
     <Compile Include="KillableProcesses\VmwareHostd.cs" />
     <Compile Include="KillableProcesses\VmwareNatService.cs" />
+    <Compile Include="KillableProcesses\SystemSettings.cs" />
+    <Compile Include="KillableProcesses\WindowsStore.cs" />
     <Compile Include="TaskHelpers\ProcessHelpers.cs" />
     <Compile Include="TaskHelpers\ServiceHelpers.cs" />
     <Compile Include="KillableProcesses\VisualStudio.cs" />
@@ -79,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dynamite.ico" />

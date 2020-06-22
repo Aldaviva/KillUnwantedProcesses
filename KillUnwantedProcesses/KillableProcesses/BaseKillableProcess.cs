@@ -37,6 +37,10 @@ namespace KillUnwantedProcesses.KillableProcesses {
             return ServiceHelpers.getServiceStartMode(serviceName);
         }
 
+        protected static bool isProcessSuspended(string processName) {
+            return ProcessHelpers.isProcessSuspended(processName);
+        }
+
     }
 
 }
