@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5FBC7ECA-3FD6-449C-9537-D46D9A3D229D}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>KillUnwantedProcesses</RootNamespace>
     <AssemblyName>KillUnwantedProcesses</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KillableProcesses\AcroTray.cs" />
+    <Compile Include="KillableProcesses\AdobeCoreSync.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudExperience.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudLibraries.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudUpdater.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="KillableProcesses\AdobeAcrobatUpdater.cs" />
     <Compile Include="KillableProcesses\AdobeCollabSync.cs" />
     <Compile Include="KillableProcesses\AdobeDesktopService.cs" />
+    <Compile Include="KillableProcesses\AdobeGenuineSoftwareIntegrityService.cs" />
     <Compile Include="KillableProcesses\AdobeNotificationClient.cs" />
     <Compile Include="KillableProcesses\BaseKillableProcess.cs" />
     <Compile Include="KillableProcesses\DotNetRuntimeOptimizationService.cs" />

@@ -9,8 +9,8 @@ namespace KillUnwantedProcesses.KillableProcesses {
         public override string name { get; } = "Virtual CloneDrive";
 
         public override bool shouldKill() {
-            const string registryPath = @"HKEY_CURRENT_USER\Software\Elaborate Bytes\VirtualCloneDrive";
-            int numberOfDrives = (int) (Registry.GetValue(registryPath, "NumberOfDrives", 0) ?? 0);
+            const string REGISTRY_PATH = @"HKEY_CURRENT_USER\Software\Elaborate Bytes\VirtualCloneDrive";
+            int numberOfDrives = (int) (Registry.GetValue(REGISTRY_PATH, "NumberOfDrives", 0) ?? 0);
 
             return numberOfDrives == 0 && !isProcessRunning("VCDPrefs") && isProcessRunning(PROCESS_NAME);
         }

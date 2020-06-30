@@ -1,4 +1,6 @@
-﻿using System.ServiceProcess;
+﻿#nullable enable
+
+using System.ServiceProcess;
 using KillUnwantedProcesses.TaskHelpers;
 
 namespace KillUnwantedProcesses.KillableProcesses {

@@ -55,7 +55,7 @@ namespace KillUnwantedProcesses.TaskHelpers {
             if (process != null) {
                 NtStatus returnCode = NtQueryInformationProcess(process.Handle, ProcessInfoClass.PROCESS_BASIC_INFORMATION,
                     out ProcessExtendedBasicInformation processBasicInformation, Marshal.SizeOf<ProcessExtendedBasicInformation>(),
-                    out int resultSize);
+                    out int _);
 
                 if (returnCode == NtStatus.SUCCESS) {
                     return (processBasicInformation.flags & ProcessExtendedBasicInformation.Flags.IS_FROZEN) != 0;

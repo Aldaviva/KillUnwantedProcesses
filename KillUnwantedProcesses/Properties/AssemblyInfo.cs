@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ben Hutchison")]
 [assembly: AssemblyProduct("KillUnwantedProcesses")]
-[assembly: AssemblyCopyright("Copyright © Ben Hutchison 2019")]
+[assembly: AssemblyCopyright("Copyright © Ben Hutchison 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
