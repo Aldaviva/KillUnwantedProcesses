@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Collections.Generic;
 using KillUnwantedProcesses.KillableProcesses;
 
@@ -6,45 +8,59 @@ namespace KillUnwantedProcesses {
 
     public class UnwantedProcessKiller {
 
-        private readonly ICollection<KillableProcess> killableProcesses = new HashSet<KillableProcess>();
+        private const int MAX_LOOPS = 32;
+
+        private readonly IReadOnlyCollection<KillableProcess> killableProcesses = new HashSet<KillableProcess> {
+            new AcroTray(),
+            new AdobeAcrobatUpdater(),
+            new AdobeCollabSync(),
+            new AdobeCoreSync(),
+            new AdobeCreativeCloudExperience(),
+            new AdobeCreativeCloudLibraries(),
+            new AdobeCreativeCloudUpdater(),
+            new AdobeDesktopService(),
+            new AdobeFlashUpdater(),
+            new AdobeGenuineSoftwareIntegrityService(),
+            new AdobeNotificationClient(),
+            new DotNetRuntimeOptimizationService(),
+            new LogitechGHub(),
+            new NvidiaControlPanel(),
+            new OfficeDocumentCache(),
+            new SystemSettings(),
+            new VirtualCloneDrive(),
+            new VisualStudio(),
+            new VmAuthdService(),
+            new VmnetDhcpService(),
+            new VmUsbArbService(),
+            new VmwareHostd(),
+            new VmwareNatService(),
+            new WindowsImageAcquisition(),
+            new WindowsStore()
+        };
 
         public static void Main() {
             new UnwantedProcessKiller().killUnwantedProcesses();
         }
 
-        private UnwantedProcessKiller() {
-            killableProcesses.Add(new AcroTray());
-            killableProcesses.Add(new AdobeAcrobatUpdater());
-            killableProcesses.Add(new AdobeCollabSync());
-            killableProcesses.Add(new AdobeCreativeCloudExperience());
-            killableProcesses.Add(new AdobeCreativeCloudLibraries());
-            killableProcesses.Add(new AdobeCreativeCloudUpdater());
-            killableProcesses.Add(new AdobeDesktopService());
-            killableProcesses.Add(new AdobeFlashUpdater());
-            killableProcesses.Add(new AdobeNotificationClient());
-            killableProcesses.Add(new DotNetRuntimeOptimizationService());
-            killableProcesses.Add(new LogitechGHub());
-            killableProcesses.Add(new NvidiaControlPanel());
-            killableProcesses.Add(new OfficeDocumentCache());
-            killableProcesses.Add(new SystemSettings());
-            killableProcesses.Add(new VirtualCloneDrive());
-            killableProcesses.Add(new VisualStudio());
-            killableProcesses.Add(new VmAuthdService());
-            killableProcesses.Add(new VmnetDhcpService());
-            killableProcesses.Add(new VmUsbArbService());
-            killableProcesses.Add(new VmwareHostd());
-            killableProcesses.Add(new VmwareNatService());
-            killableProcesses.Add(new WindowsImageAcquisition());
-            killableProcesses.Add(new WindowsStore());
-        }
-
         private void killUnwantedProcesses() {
-            foreach (KillableProcess processToKill in killableProcesses) {
-                if (processToKill.shouldKill()) {
-                    Console.WriteLine($"Killing {processToKill.name}");
-                    processToKill.kill();
+            var processesToCheck = new HashSet<KillableProcess>(killableProcesses);
+            var processesKilledInLastIteration = new HashSet<KillableProcess>();
+            int loops = 0;
+
+            do {
+                processesKilledInLastIteration.Clear();
+
+                foreach (KillableProcess processToKill in processesToCheck) {
+                    if (processToKill.shouldKill()) {
+                        Console.WriteLine($"Killing {processToKill.name}");
+                        processToKill.kill();
+                        processesKilledInLastIteration.Add(processToKill); //don't recheck this program on the next loop
+                    }
                 }
-            }
+
+                processesToCheck.RemoveWhere(processesKilledInLastIteration.Contains);
+
+            } while (processesKilledInLastIteration.Count > 0 && ++loops < MAX_LOOPS);
         }
 
     }
