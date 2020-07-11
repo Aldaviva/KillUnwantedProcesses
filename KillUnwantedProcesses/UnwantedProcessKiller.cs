@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using KillUnwantedProcesses.KillableProcesses;
 
 namespace KillUnwantedProcesses {
@@ -22,6 +23,8 @@ namespace KillUnwantedProcesses {
             new AdobeFlashUpdater(),
             new AdobeGenuineSoftwareIntegrityService(),
             new AdobeNotificationClient(),
+            new Calculator(),
+            new Cortana(),
             new DotNetRuntimeOptimizationService(),
             new LogitechGHub(),
             new NvidiaControlPanel(),
@@ -50,12 +53,10 @@ namespace KillUnwantedProcesses {
             do {
                 processesKilledInLastIteration.Clear();
 
-                foreach (KillableProcess processToKill in processesToCheck) {
-                    if (processToKill.shouldKill()) {
-                        Console.WriteLine($"Killing {processToKill.name}");
-                        processToKill.kill();
-                        processesKilledInLastIteration.Add(processToKill); //don't recheck this program on the next loop
-                    }
+                foreach (KillableProcess processToKill in processesToCheck.Where(process => process.shouldKill())) {
+                    Console.WriteLine($"Killing {processToKill.name}");
+                    processToKill.kill();
+                    processesKilledInLastIteration.Add(processToKill); //don't recheck this program on the next loop
                 }
 
                 processesToCheck.RemoveWhere(processesKilledInLastIteration.Contains);
