@@ -43,6 +43,14 @@ namespace KillUnwantedProcesses.KillableProcesses {
             return ProcessHelpers.isProcessSuspended(processName);
         }
 
+        protected static bool isUwpAppxPackageInstalled(string packageName) {
+            return UwpHelpers.isUwpAppxPackageInstalled(packageName);
+        }
+
+        protected static void uninstallUwpAppxPackage(string packageName) {
+            UwpHelpers.uninstallUwpAppxPackage(packageName);
+        }
+
     }
 
 }

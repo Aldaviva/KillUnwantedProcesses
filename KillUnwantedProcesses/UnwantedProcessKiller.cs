@@ -12,6 +12,7 @@ namespace KillUnwantedProcesses {
         private const int MAX_LOOPS = 32;
 
         private readonly IReadOnlyCollection<KillableProcess> killableProcesses = new HashSet<KillableProcess> {
+            new AcrobatNotificationService(),
             new AcroTray(),
             new AdobeAcrobatUpdater(),
             new AdobeCollabSync(),
@@ -23,13 +24,10 @@ namespace KillUnwantedProcesses {
             new AdobeFlashUpdater(),
             new AdobeGenuineSoftwareIntegrityService(),
             new AdobeNotificationClient(),
-            new Calculator(),
-            new Cortana(),
             new DotNetRuntimeOptimizationService(),
             new LogitechGHub(),
             new NvidiaControlPanel(),
             new OfficeDocumentCache(),
-            new SystemSettings(),
             new VirtualCloneDrive(),
             new VisualStudio(),
             new VmAuthdService(),
@@ -37,8 +35,7 @@ namespace KillUnwantedProcesses {
             new VmUsbArbService(),
             new VmwareHostd(),
             new VmwareNatService(),
-            new WindowsImageAcquisition(),
-            new WindowsStore()
+            new WindowsImageAcquisition()
         };
 
         public static void Main() {
