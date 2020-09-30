@@ -64,6 +64,7 @@
     <Compile Include="KillableProcesses\AdobeCreativeCloudExperience.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudLibraries.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudUpdater.cs" />
+    <Compile Include="KillableProcesses\AdobeUpdateService.cs" />
     <Compile Include="KillableProcesses\AdobeFlashUpdater.cs" />
     <Compile Include="KillableProcesses\AdobeAcrobatUpdater.cs" />
     <Compile Include="KillableProcesses\AdobeCollabSync.cs" />
