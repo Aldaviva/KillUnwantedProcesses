@@ -23,14 +23,17 @@ namespace KillUnwantedProcesses.KillableProcesses {
         }
 
         private static IEnumerable<string> findServiceNames(string nameQuery) {
-            ICollection<string> serviceNameResults = new HashSet<string>();
 
-            using (var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_Service", $"Name LIKE '{nameQuery}'"))) {
-                using ManagementObjectCollection results = searcher.Get();
-                using ManagementObjectCollection.ManagementObjectEnumerator resultsEnumerator = results.GetEnumerator();
-                while (resultsEnumerator.MoveNext()) {
-                    serviceNameResults.Add((string) resultsEnumerator.Current.GetPropertyValue("Name"));
-                }
+            using var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_Service", $"Name LIKE '{nameQuery}'"));
+
+            using ManagementObjectCollection results = searcher.Get();
+
+            ICollection<string> serviceNameResults = new HashSet<string>(results.Count);
+
+            using ManagementObjectCollection.ManagementObjectEnumerator resultsEnumerator = results.GetEnumerator();
+
+            while (resultsEnumerator.MoveNext()) {
+                serviceNameResults.Add((string) resultsEnumerator.Current.GetPropertyValue("Name"));
             }
 
             return serviceNameResults;
