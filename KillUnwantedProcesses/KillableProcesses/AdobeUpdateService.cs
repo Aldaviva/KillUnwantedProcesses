@@ -1,5 +1,7 @@
 ﻿using System.ServiceProcess;
 
+#nullable enable
+
 namespace KillUnwantedProcesses.KillableProcesses {
 
     public class AdobeUpdateService: BaseKillableProcess {
@@ -9,7 +11,7 @@ namespace KillUnwantedProcesses.KillableProcesses {
         public override string name { get; } = "Adobe Update Service";
 
         public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME);
+            return isServiceRunning(SERVICE_NAME) && !isProcessRunning(AdobeDesktopService.ADOBE_DESKTOP_SERVICE_PROCESS_NAME);
         }
 
         public override void kill() {

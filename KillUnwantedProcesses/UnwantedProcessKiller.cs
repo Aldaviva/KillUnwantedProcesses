@@ -9,8 +9,6 @@ namespace KillUnwantedProcesses {
 
     public class UnwantedProcessKiller {
 
-        private const int MAX_LOOPS = 32;
-
         private readonly IReadOnlyCollection<KillableProcess> killableProcesses = new HashSet<KillableProcess> {
             new AcrobatNotificationService(),
             new AcroTray(),
@@ -19,15 +17,14 @@ namespace KillUnwantedProcesses {
             new AdobeCoreSync(),
             new AdobeCreativeCloudExperience(),
             new AdobeCreativeCloudLibraries(),
-            new AdobeCreativeCloudUpdater(),
             new AdobeDesktopService(),
             new AdobeFlashUpdater(),
+            new AdobeGenuineMonitorService(),
             new AdobeGenuineSoftwareIntegrityService(),
             new AdobeNotificationClient(),
             new AdobeUpdateService(),
             new DotNetRuntimeOptimizationService(),
             new LogitechGHub(),
-            // new NvidiaControlPanel(),
             new OfficeDocumentCache(),
             new VirtualCloneDrive(),
             new VisualStudio(),
@@ -59,7 +56,7 @@ namespace KillUnwantedProcesses {
 
                 processesToCheck.RemoveWhere(processesKilledInLastIteration.Contains);
 
-            } while (processesKilledInLastIteration.Count > 0 && ++loops < MAX_LOOPS);
+            } while ((processesKilledInLastIteration.Count > 0) && (++loops < killableProcesses.Count));
         }
 
     }
