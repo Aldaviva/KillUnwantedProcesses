@@ -23,6 +23,7 @@ namespace KillUnwantedProcesses {
             new AdobeGenuineSoftwareIntegrityService(),
             new AdobeNotificationClient(),
             new AdobeUpdateService(),
+            new AutodeskLicensingService(),
             new DotNetRuntimeOptimizationService(),
             new LogitechGHub(),
             new OfficeDocumentCache(),

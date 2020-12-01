@@ -71,8 +71,8 @@
     <Compile Include="KillableProcesses\AdobeDesktopService.cs" />
     <Compile Include="KillableProcesses\AdobeGenuineSoftwareIntegrityService.cs" />
     <Compile Include="KillableProcesses\AdobeNotificationClient.cs" />
+    <Compile Include="KillableProcesses\AutodeskLicensingService.cs" />
     <Compile Include="KillableProcesses\BaseKillableProcess.cs" />
-    <Compile Include="KillableProcesses\Calculator.cs" />
     <Compile Include="KillableProcesses\DotNetRuntimeOptimizationService.cs" />
     <Compile Include="KillableProcesses\LogitechGHub.cs" />
     <Compile Include="KillableProcesses\OfficeDocumentCache.cs" />
@@ -81,8 +81,6 @@
     <Compile Include="KillableProcesses\VmUsbArbService.cs" />
     <Compile Include="KillableProcesses\VmwareHostd.cs" />
     <Compile Include="KillableProcesses\VmwareNatService.cs" />
-    <Compile Include="KillableProcesses\SystemSettings.cs" />
-    <Compile Include="KillableProcesses\Cortana.cs" />
     <Compile Include="KillableProcesses\WindowsStore.cs" />
     <Compile Include="KillableProcesses\AcrobatNotificationService.cs" />
     <Compile Include="TaskHelpers\ProcessHelpers.cs" />
