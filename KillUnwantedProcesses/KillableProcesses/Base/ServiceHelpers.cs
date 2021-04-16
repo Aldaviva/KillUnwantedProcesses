@@ -4,7 +4,7 @@ using System;
 using System.Management;
 using System.ServiceProcess;
 
-namespace KillUnwantedProcesses.TaskHelpers {
+namespace KillUnwantedProcesses.KillableProcesses.Base {
 
     internal static class ServiceHelpers {
 

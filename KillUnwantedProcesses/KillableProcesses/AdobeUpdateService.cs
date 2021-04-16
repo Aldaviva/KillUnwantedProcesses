@@ -1,22 +1,19 @@
-﻿using System.ServiceProcess;
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
 #nullable enable
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class AdobeUpdateService: BaseKillableProcess {
+    public class AdobeUpdateService: KillableService {
 
-        private const string SERVICE_NAME = "AdobeUpdateService";
+        protected override string serviceName { get; } = "AdobeUpdateService";
 
         public override string name { get; } = "Adobe Update Service";
 
         public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME) && !isProcessRunning(AdobeDesktopService.ADOBE_DESKTOP_SERVICE_PROCESS_NAME);
+            return base.shouldKill() && !isProcessRunning(new AdobeDesktopService().processName);
         }
-
-        public override void kill() {
-            stopService(SERVICE_NAME, ServiceStartMode.Disabled);
-        }
+        
 
     }
 

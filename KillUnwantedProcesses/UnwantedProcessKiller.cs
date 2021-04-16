@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using KillUnwantedProcesses.KillableProcesses;
+using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses {
 
     public class UnwantedProcessKiller {
 
-        private readonly IReadOnlyCollection<KillableProcess> killableProcesses = new HashSet<KillableProcess> {
+        private readonly IReadOnlyCollection<Killable> killableProcesses = new HashSet<Killable> {
             new AcrobatNotificationService(),
             new AcroTray(),
             new AdobeAcrobatUpdater(),
@@ -25,6 +26,7 @@ namespace KillUnwantedProcesses {
             new AdobeUpdateService(),
             new AutodeskLicensingService(),
             new DotNetRuntimeOptimizationService(),
+            new FlexNetLicensingService(),
             new LogitechGHub(),
             new OfficeDocumentCache(),
             new VirtualCloneDrive(),
@@ -42,14 +44,14 @@ namespace KillUnwantedProcesses {
         }
 
         private void killUnwantedProcesses() {
-            var processesToCheck = new HashSet<KillableProcess>(killableProcesses);
-            var processesKilledInLastIteration = new HashSet<KillableProcess>();
+            var processesToCheck = new HashSet<Killable>(killableProcesses);
+            var processesKilledInLastIteration = new HashSet<Killable>();
             int loops = 0;
 
             do {
                 processesKilledInLastIteration.Clear();
 
-                foreach (KillableProcess processToKill in processesToCheck.Where(process => process.shouldKill())) {
+                foreach (Killable processToKill in processesToCheck.Where(process => process.shouldKill())) {
                     Console.WriteLine($"Killing {processToKill.name}");
                     processToKill.kill();
                     processesKilledInLastIteration.Add(processToKill); //don't recheck this program on the next loop

@@ -9,12 +9,10 @@ using System.Runtime.InteropServices;
 
 namespace KillUnwantedProcesses.Utilities {
 
-    /// <summary>
-    /// A utility class to determine a process parent.
-    /// </summary>
+    /// <summary>A utility class to determine a process parent.</summary>
     /// <remarks><a href="https://stackoverflow.com/a/3346055/979493">Source</a></remarks>
     [StructLayout(LayoutKind.Sequential)]
-    public struct ParentProcessUtilities {
+    internal readonly struct ParentProcessUtilities {
 
         // These members must match PROCESS_BASIC_INFORMATION
         private readonly IntPtr Reserved1;
@@ -25,20 +23,16 @@ namespace KillUnwantedProcesses.Utilities {
         private readonly IntPtr InheritedFromUniqueProcessId;
 
         [DllImport("ntdll.dll")]
-        private static extern int NtQueryInformationProcess(IntPtr processHandle, int processInformationClass,
-            ref ParentProcessUtilities processInformation, int processInformationLength, out int returnLength);
+        private static extern int NtQueryInformationProcess(IntPtr                     processHandle,      int processInformationClass,
+                                                            ref ParentProcessUtilities processInformation, int processInformationLength, out int returnLength);
 
-        /// <summary>
-        /// Gets the parent process of the current process.
-        /// </summary>
+        /// <summary>Gets the parent process of the current process.</summary>
         /// <returns>An instance of the Process class.</returns>
         public static Process? getParentProcess() {
             return getParentProcess(Process.GetCurrentProcess());
         }
 
-        /// <summary>
-        /// Gets the parent process of specified process.
-        /// </summary>
+        /// <summary>Gets the parent process of specified process.</summary>
         /// <param name="id">The process id.</param>
         /// <returns>An instance of the Process class.</returns>
         public static Process? getParentProcess(int id) {
@@ -46,25 +40,22 @@ namespace KillUnwantedProcesses.Utilities {
             return getParentProcess(process);
         }
 
-        /// <summary>
-        /// Gets the parent process of specified process.
-        /// </summary>
+        /// <summary>Gets the parent process of specified process.</summary>
         /// <param name="child">The child process.</param>
         /// <returns>An instance of the Process class.</returns>
         public static Process? getParentProcess(Process child) {
             return getParentProcess(child.Handle);
         }
 
-        /// <summary>
-        /// Gets the parent process of a specified process.
-        /// </summary>
+        /// <summary>Gets the parent process of a specified process.</summary>
         /// <param name="handle">The process handle.</param>
         /// <returns>An instance of the Process class.</returns>
         private static Process? getParentProcess(IntPtr handle) {
-            var pbi = new ParentProcessUtilities();
+            var pbi    = new ParentProcessUtilities();
             int status = NtQueryInformationProcess(handle, 0, ref pbi, Marshal.SizeOf(pbi), out int _);
-            if (status != 0)
+            if (status != 0) {
                 throw new Win32Exception(status);
+            }
 
             try {
                 return Process.GetProcessById(pbi.InheritedFromUniqueProcessId.ToInt32());

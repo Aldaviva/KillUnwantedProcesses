@@ -1,20 +1,12 @@
-﻿using System.ServiceProcess;
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class AdobeFlashUpdater: BaseKillableProcess {
-
-        private const string SERVICE_NAME = "AdobeFlashPlayerUpdateSvc";
+    public class AdobeFlashUpdater: KillableService {
 
         public override string name { get; } = "Adobe Flash Updater";
 
-        public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME);
-        }
-
-        public override void kill() {
-            stopService(SERVICE_NAME, ServiceStartMode.Disabled);
-        }
+        protected override string serviceName { get; } = "AdobeFlashPlayerUpdateSvc";
 
     }
 

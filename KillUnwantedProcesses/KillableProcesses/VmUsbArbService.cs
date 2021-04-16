@@ -1,20 +1,12 @@
-﻿using System.ServiceProcess;
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class VmUsbArbService: BaseKillableProcess {
+    public class VmUsbArbService: KillableService {
 
-        private const string SERVICE_NAME = "VMUSBArbService";
+        protected override string serviceName { get; } = "VMUSBArbService";
 
         public override string name { get; } = "VMware USB Arbitration Service";
-
-        public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME);
-        }
-
-        public override void kill() {
-            stopService(SERVICE_NAME, ServiceStartMode.Disabled);
-        }
 
     }
 

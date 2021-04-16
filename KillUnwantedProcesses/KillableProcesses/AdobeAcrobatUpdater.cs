@@ -1,20 +1,12 @@
-﻿using System.ServiceProcess;
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class AdobeAcrobatUpdater: BaseKillableProcess {
-
-        private const string SERVICE_NAME = "AdobeARMservice";
+    public class AdobeAcrobatUpdater: KillableService {
 
         public override string name { get; } = "Adobe Acrobat Updater";
 
-        public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME);
-        }
-
-        public override void kill() {
-            stopService(SERVICE_NAME, ServiceStartMode.Disabled);
-        }
+        protected override string serviceName { get; } = "AdobeARMservice";
 
     }
 

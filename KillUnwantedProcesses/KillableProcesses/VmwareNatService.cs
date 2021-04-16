@@ -1,20 +1,12 @@
-﻿using System.ServiceProcess;
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class VmwareNatService: BaseKillableProcess {
+    public class VmwareNatService: KillableService {
 
-        private const string SERVICE_NAME = "VMware NAT Service";
+        protected override string serviceName { get; } = "VMware NAT Service";
 
         public override string name { get; } = "VMware NAT Service";
-
-        public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME);
-        }
-
-        public override void kill() {
-            stopService(SERVICE_NAME, ServiceStartMode.Disabled);
-        }
 
     }
 

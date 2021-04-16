@@ -3,7 +3,7 @@
 using System.Collections.ObjectModel;
 using System.Management.Automation;
 
-namespace KillUnwantedProcesses.TaskHelpers {
+namespace KillUnwantedProcesses.KillableProcesses.Base {
 
     public static class UwpHelpers {
 

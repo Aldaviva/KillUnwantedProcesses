@@ -1,19 +1,18 @@
 ﻿using System.ServiceProcess;
+using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class NvidiaControlPanel: BaseKillableProcess {
+    public class NvidiaControlPanel: KillableService {
 
-        private const string SERVICE_NAME = "NVDisplay.ContainerLocalSystem";
+        protected override string serviceName { get; } = "NVDisplay.ContainerLocalSystem";
 
         public override string name { get; } = "Nvidia Control Panel";
 
-        public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME) && !isProcessRunning("nvcplui");
-        }
+        protected override ServiceStartMode? desiredServiceStartMode { get; } = ServiceStartMode.Manual;
 
-        public override void kill() {
-            stopService(SERVICE_NAME, ServiceStartMode.Manual);
+        public override bool shouldKill() {
+            return base.shouldKill() && !isProcessRunning("nvcplui");
         }
 
     }

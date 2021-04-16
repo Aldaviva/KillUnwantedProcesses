@@ -1,17 +1,15 @@
-﻿namespace KillUnwantedProcesses.KillableProcesses {
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-    public class AdobeCollabSync: BaseKillableProcess {
+namespace KillUnwantedProcesses.KillableProcesses {
 
-        private const string PROCESS_NAME = "AdobeCollabSync";
+    public class AdobeCollabSync: KillableProcess {
+
+        public override string processName { get; } = "AdobeCollabSync";
 
         public override string name { get; } = "Adobe Collaboration Synchronizer";
 
         public override bool shouldKill() {
-            return !isProcessRunning("Acrobat") && isProcessRunning(PROCESS_NAME);
-        }
-
-        public override void kill() {
-            killProcess(PROCESS_NAME, true);
+            return base.shouldKill() && !isProcessRunning("Acrobat");
         }
 
     }

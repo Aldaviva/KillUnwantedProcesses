@@ -1,20 +1,12 @@
-﻿using System.ServiceProcess;
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class VmwareHostd: BaseKillableProcess {
+    public class VmwareHostd: KillableService {
 
-        private const string SERVICE_NAME = "VMwareHostd";
+        protected override string serviceName { get; } = "VMwareHostd";
 
         public override string name { get; } = "VMware Workstation Server";
-
-        public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME);
-        }
-
-        public override void kill() {
-            stopService(SERVICE_NAME, ServiceStartMode.Disabled);
-        }
 
     }
 

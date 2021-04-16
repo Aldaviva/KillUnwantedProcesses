@@ -1,17 +1,15 @@
-﻿namespace KillUnwantedProcesses.KillableProcesses {
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-    public class AcroTray: BaseKillableProcess {
+namespace KillUnwantedProcesses.KillableProcesses {
 
-        private const string PROCESS_NAME = "acrotray";
+    public class AcroTray: KillableProcess {
 
         public override string name { get; } = "AcroTray";
 
-        public override bool shouldKill() {
-            return isProcessRunning(PROCESS_NAME) && !isProcessRunning("Acrobat");
-        }
+        public override string processName { get; } = "acrotray";
 
-        public override void kill() {
-            killProcess(PROCESS_NAME);
+        public override bool shouldKill() {
+            return base.shouldKill() && !isProcessRunning("Acrobat");
         }
 
     }

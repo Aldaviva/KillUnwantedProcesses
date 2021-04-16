@@ -1,22 +1,14 @@
 ﻿#nullable enable
 
-using System.ServiceProcess;
+using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class AdobeGenuineSoftwareIntegrityService: BaseKillableProcess {
+    public class AdobeGenuineSoftwareIntegrityService: KillableService {
 
-        private const string SERVICE_NAME = "AGSService";
+        protected override string serviceName { get; } = "AGSService";
 
         public override string name { get; } = "Adobe Genuine Software Integrity Service";
-
-        public override bool shouldKill() {
-            return isServiceRunning(SERVICE_NAME);
-        }
-
-        public override void kill() {
-            stopService(SERVICE_NAME, ServiceStartMode.Disabled);
-        }
 
     }
 

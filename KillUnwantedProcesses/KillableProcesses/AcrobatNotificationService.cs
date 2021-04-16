@@ -1,6 +1,8 @@
-﻿namespace KillUnwantedProcesses.KillableProcesses {
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-    public class AcrobatNotificationService: BaseKillableProcess {
+namespace KillUnwantedProcesses.KillableProcesses {
+
+    public class AcrobatNotificationService: KillableBase {
 
         private const string APPX_PACKAGE_NAME = "AcrobatNotificationClient";
 

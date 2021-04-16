@@ -1,11 +1,10 @@
 ﻿#nullable enable
 
 using System.ServiceProcess;
-using KillUnwantedProcesses.TaskHelpers;
 
-namespace KillUnwantedProcesses.KillableProcesses {
+namespace KillUnwantedProcesses.KillableProcesses.Base {
 
-    public abstract class BaseKillableProcess: KillableProcess {
+    public abstract class KillableBase: Killable {
 
         /// <summary>
         /// End a running process on the current computer. Returns successfully whether or not the process was running or was killed
@@ -50,6 +49,10 @@ namespace KillUnwantedProcesses.KillableProcesses {
         protected static void uninstallUwpAppxPackage(string packageName) {
             UwpHelpers.uninstallUwpAppxPackage(packageName);
         }
+
+        public abstract string name { get; }
+        public abstract bool shouldKill();
+        public abstract void kill();
 
     }
 

@@ -1,22 +1,20 @@
-﻿namespace KillUnwantedProcesses.KillableProcesses {
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-    public class OfficeDocumentCache: BaseKillableProcess {
+namespace KillUnwantedProcesses.KillableProcesses {
 
-        private const string PROCESS_NAME = "MSOSYNC";
+    public class OfficeDocumentCache: KillableProcess {
+
+        public override string processName { get; } = "MSOSYNC";
 
         public override string name { get; } = "Office Document Cache";
 
         public override bool shouldKill() {
-            return isProcessRunning(PROCESS_NAME) &&
+            return base.shouldKill() &&
                    !isProcessRunning("EXCEL") &&
                    !isProcessRunning("WINWORD") &&
                    !isProcessRunning("ONENOTE") &&
                    !isProcessRunning("POWERPNT.EXE") &&
                    !isProcessRunning("OUTLOOK.EXE");
-        }
-
-        public override void kill() {
-            killProcess(PROCESS_NAME);
         }
 
     }

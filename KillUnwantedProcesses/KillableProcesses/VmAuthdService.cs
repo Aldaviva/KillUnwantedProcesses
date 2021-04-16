@@ -1,11 +1,11 @@
 ﻿using System;
-using System.ServiceProcess;
+using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class VmAuthdService: BaseKillableProcess {
+    public class VmAuthdService: KillableService {
 
-        private const string SERVICE_NAME = "VMAuthdService";
+        protected override string serviceName { get; } = "VMAuthdService";
 
         public override string name { get; } = "VMware Authorization Service";
 
@@ -14,11 +14,7 @@ namespace KillUnwantedProcesses.KillableProcesses {
         /// </summary>
         /// <returns></returns>
         public override bool shouldKill() {
-            return Environment.OSVersion.Version.Major <= 7 && isServiceRunning(SERVICE_NAME) && !isProcessRunning("vmware-vmx");
-        }
-
-        public override void kill() {
-            stopService(SERVICE_NAME, ServiceStartMode.Disabled);
+            return base.shouldKill() && Environment.OSVersion.Version.Major <= 7  && !isProcessRunning("vmware-vmx");
         }
 
     }

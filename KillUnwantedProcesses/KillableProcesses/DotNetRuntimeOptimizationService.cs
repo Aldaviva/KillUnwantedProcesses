@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Management;
 using System.ServiceProcess;
+using KillUnwantedProcesses.KillableProcesses.Base;
 
 namespace KillUnwantedProcesses.KillableProcesses {
 
-    public class DotNetRuntimeOptimizationService: BaseKillableProcess {
+    public class DotNetRuntimeOptimizationService: KillableBase {
 
         private const string SERVICE_NAME_PATTERN = "clr_optimization_%";
 

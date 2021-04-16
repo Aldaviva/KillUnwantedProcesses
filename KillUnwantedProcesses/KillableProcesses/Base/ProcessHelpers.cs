@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using KillUnwantedProcesses.Utilities;
 
-namespace KillUnwantedProcesses.TaskHelpers {
+namespace KillUnwantedProcesses.KillableProcesses.Base {
 
     internal static class ProcessHelpers {
 
@@ -45,9 +45,7 @@ namespace KillUnwantedProcesses.TaskHelpers {
             return process != null;
         }
 
-        private static string stripExeSuffix(string processName) {
-            return Regex.Replace(processName, @"\.exe$", string.Empty, RegexOptions.IgnoreCase);
-        }
+        private static string stripExeSuffix(string processName) => Regex.Replace(processName, @"\.exe$", string.Empty, RegexOptions.IgnoreCase);
 
         public static bool isProcessSuspended(string processName) {
             processName = stripExeSuffix(processName);

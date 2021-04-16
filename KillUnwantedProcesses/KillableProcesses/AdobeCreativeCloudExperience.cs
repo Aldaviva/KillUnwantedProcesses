@@ -1,17 +1,15 @@
-﻿namespace KillUnwantedProcesses.KillableProcesses {
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-    public class AdobeCreativeCloudExperience: BaseKillableProcess {
+namespace KillUnwantedProcesses.KillableProcesses {
 
-        private const string PROCESS_NAME = "CCXProcess";
+    public class AdobeCreativeCloudExperience: KillableProcess {
+
+        public override string processName { get; } = "CCXProcess";
 
         public override string name { get; } = "Adobe Creative Cloud Experience";
 
         public override bool shouldKill() {
-            return isProcessRunning(PROCESS_NAME) && !isProcessRunning(AdobeDesktopService.ADOBE_DESKTOP_SERVICE_PROCESS_NAME);
-        }
-
-        public override void kill() {
-            killProcess(PROCESS_NAME, true);
+            return base.shouldKill() && !isProcessRunning(new AdobeDesktopService().processName);
         }
 
     }

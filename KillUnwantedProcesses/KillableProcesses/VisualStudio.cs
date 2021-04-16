@@ -1,18 +1,17 @@
-﻿namespace KillUnwantedProcesses.KillableProcesses {
+﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-    public class VisualStudio: BaseKillableProcess {
+namespace KillUnwantedProcesses.KillableProcesses {
 
-        private const string PROCESS_NAME = "VBCSCompiler";
+    public class VisualStudio: KillableProcess {
+
+        public override string processName { get; } = "VBCSCompiler";
 
         public override string name { get; } = "Visual Studio Compiler";
 
         public override bool shouldKill() {
-            return isProcessRunning(PROCESS_NAME) && !isProcessRunning("devenv");
+            return base.shouldKill() && !isProcessRunning("devenv");
         }
 
-        public override void kill() {
-            killProcess(PROCESS_NAME);
-        }
 
     }
 
