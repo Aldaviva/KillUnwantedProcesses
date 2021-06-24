@@ -28,6 +28,7 @@ namespace KillUnwantedProcesses {
             new DotNetRuntimeOptimizationService(),
             new FlexNetLicensingService(),
             new LogitechGHub(),
+            new NvidiaControlPanel(),
             new OfficeDocumentCache(),
             new VirtualCloneDrive(),
             new VisualStudio(),
@@ -44,9 +45,9 @@ namespace KillUnwantedProcesses {
         }
 
         private void killUnwantedProcesses() {
-            var processesToCheck = new HashSet<Killable>(killableProcesses);
+            var processesToCheck               = new HashSet<Killable>(killableProcesses);
             var processesKilledInLastIteration = new HashSet<Killable>();
-            int loops = 0;
+            int loops                          = 0;
 
             do {
                 processesKilledInLastIteration.Clear();
@@ -59,7 +60,7 @@ namespace KillUnwantedProcesses {
 
                 processesToCheck.RemoveWhere(processesKilledInLastIteration.Contains);
 
-            } while ((processesKilledInLastIteration.Count > 0) && (++loops < killableProcesses.Count));
+            } while (processesKilledInLastIteration.Count > 0 && ++loops < killableProcesses.Count);
         }
 
     }
