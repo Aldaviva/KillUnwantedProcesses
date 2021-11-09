@@ -88,7 +88,7 @@
     <Compile Include="KillableProcesses\AcrobatNotificationService.cs" />
     <Compile Include="KillableProcesses\Base\ProcessHelpers.cs" />
     <Compile Include="KillableProcesses\Base\ServiceHelpers.cs" />
-    <Compile Include="KillableProcesses\VisualStudio.cs" />
+    <Compile Include="KillableProcesses\VisualStudioCompiler.cs" />
     <Compile Include="KillableProcesses\WindowsImageAcquisition.cs" />
     <Compile Include="KillableProcesses\Base\UwpHelpers.cs" />
     <Compile Include="ProcessesToKill.cs" />

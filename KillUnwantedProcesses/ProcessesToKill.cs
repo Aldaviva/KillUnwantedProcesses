@@ -28,7 +28,7 @@ namespace KillUnwantedProcesses {
             new NvidiaControlPanel(),
             new OfficeDocumentCache(),
             new VirtualCloneDrive(),
-            new VisualStudio(),
+            new VisualStudioCompiler(),
             new VmAuthdService(),
             new VmnetDhcpService(),
             new VmUsbArbService(),
