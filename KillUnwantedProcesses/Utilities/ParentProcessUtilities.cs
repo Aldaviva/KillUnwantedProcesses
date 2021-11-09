@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -36,7 +35,7 @@ namespace KillUnwantedProcesses.Utilities {
         /// <param name="id">The process id.</param>
         /// <returns>An instance of the Process class.</returns>
         public static Process? getParentProcess(int id) {
-            var process = Process.GetProcessById(id);
+            Process? process = Process.GetProcessById(id);
             return getParentProcess(process);
         }
 
@@ -51,10 +50,10 @@ namespace KillUnwantedProcesses.Utilities {
         /// <param name="handle">The process handle.</param>
         /// <returns>An instance of the Process class.</returns>
         private static Process? getParentProcess(IntPtr handle) {
-            var pbi    = new ParentProcessUtilities();
-            int status = NtQueryInformationProcess(handle, 0, ref pbi, Marshal.SizeOf(pbi), out int _);
+            ParentProcessUtilities pbi    = new();
+            int                    status = NtQueryInformationProcess(handle, 0, ref pbi, Marshal.SizeOf(pbi), out int _);
             if (status != 0) {
-                throw new Win32Exception(status);
+                return null;
             }
 
             try {

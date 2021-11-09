@@ -10,7 +10,7 @@ namespace KillUnwantedProcesses.KillableProcesses.Base {
         protected virtual ServiceStartMode? desiredServiceStartMode { get; } = ServiceStartMode.Disabled;
 
         public override bool shouldKill() {
-            return isServiceRunning(serviceName);
+            return isServiceRunning(serviceName) && base.shouldKill();
         }
 
         public override void kill() {

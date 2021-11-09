@@ -77,6 +77,7 @@
     <Compile Include="KillableProcesses\DotNetRuntimeOptimizationService.cs" />
     <Compile Include="KillableProcesses\FlexNetLicensingService.cs" />
     <Compile Include="KillableProcesses\Base\KillableProcess.cs" />
+    <Compile Include="KillableProcesses\GpgAgent.cs" />
     <Compile Include="KillableProcesses\LogitechGHub.cs" />
     <Compile Include="KillableProcesses\OfficeDocumentCache.cs" />
     <Compile Include="KillableProcesses\VmAuthdService.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="KillableProcesses\VisualStudio.cs" />
     <Compile Include="KillableProcesses\WindowsImageAcquisition.cs" />
     <Compile Include="KillableProcesses\Base\UwpHelpers.cs" />
+    <Compile Include="ProcessesToKill.cs" />
     <Compile Include="Utilities\ParentProcessUtilities.cs" />
     <Compile Include="KillableProcesses\Base\Killable.cs" />
     <Compile Include="KillableProcesses\NvidiaControlPanel.cs" />

@@ -1,10 +1,15 @@
 ﻿#nullable enable
 
+using System.Collections.Generic;
+using System.Linq;
 using System.ServiceProcess;
 
 namespace KillUnwantedProcesses.KillableProcesses.Base {
 
     public abstract class KillableBase: Killable {
+
+        public abstract string name { get; }
+        public abstract void kill();
 
         /// <summary>
         /// End a running process on the current computer. Returns successfully whether or not the process was running or was killed
@@ -50,9 +55,12 @@ namespace KillUnwantedProcesses.KillableProcesses.Base {
             UwpHelpers.uninstallUwpAppxPackage(packageName);
         }
 
-        public abstract string name { get; }
-        public abstract bool shouldKill();
-        public abstract void kill();
+        /// <summary>
+        /// If any of these savior processes are running, don't kill this process. Additional conditions can be specified by overriding <see cref="shouldKill"/>.
+        /// </summary>
+        protected virtual IEnumerable<string> saviorProcesses => Enumerable.Empty<string>();
+
+        public virtual bool shouldKill() => !saviorProcesses.Any(isProcessRunning);
 
     }
 
