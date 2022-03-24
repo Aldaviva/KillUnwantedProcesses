@@ -24,7 +24,7 @@ namespace KillUnwantedProcesses {
             new DotNetRuntimeOptimizationService(),
             new FlexNetLicensingService(),
             new GpgAgent(),
-            new LogitechGHub(),
+            // new LogitechGHub(),
             new NvidiaControlPanel(),
             new OfficeDocumentCache(),
             new VirtualCloneDrive(),

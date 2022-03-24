@@ -15,7 +15,7 @@ namespace KillUnwantedProcesses {
 
         private static void killUnwantedProcesses() {
             HashSet<Killable> processesToCheck               = new(ProcessesToKill.PROCESSES);
-            HashSet<Killable> processesKilledInLastIteration = new();
+            ISet<Killable>    processesKilledInLastIteration = new HashSet<Killable>();
             int               loops                          = 0;
 
             do {
