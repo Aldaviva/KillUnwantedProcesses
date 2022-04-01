@@ -34,7 +34,7 @@ namespace KillUnwantedProcesses {
             new VmUsbArbService(),
             new VmwareHostd(),
             new VmwareNatService(),
-            new WindowsImageAcquisition()
+            // new WindowsImageAcquisition()
         };
 
     }
