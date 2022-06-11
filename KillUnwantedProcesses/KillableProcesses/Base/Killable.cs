@@ -1,15 +1,13 @@
 ﻿#nullable enable
 
-namespace KillUnwantedProcesses.KillableProcesses.Base {
+namespace KillUnwantedProcesses.KillableProcesses.Base; 
 
-    public interface Killable {
+public interface Killable {
 
-        string name { get; }
+    string name { get; }
 
-        bool shouldKill();
+    bool shouldKill();
 
-        void kill();
-
-    }
+    void kill();
 
 }

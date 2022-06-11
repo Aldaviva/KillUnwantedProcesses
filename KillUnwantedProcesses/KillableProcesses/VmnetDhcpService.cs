@@ -1,13 +1,11 @@
 ﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-namespace KillUnwantedProcesses.KillableProcesses {
+namespace KillUnwantedProcesses.KillableProcesses; 
 
-    public class VmnetDhcpService: KillableService {
+public class VmnetDhcpService: KillableService {
 
-        protected override string serviceName { get; }= "VMnetDHCP";
+    protected override string serviceName { get; } = "VMnetDHCP";
 
-        public override string name { get; } = "VMware DHCP Service";
-
-    }
+    public override string name { get; } = "VMware DHCP Service";
 
 }

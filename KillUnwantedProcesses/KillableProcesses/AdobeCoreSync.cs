@@ -1,17 +1,15 @@
 ﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-namespace KillUnwantedProcesses.KillableProcesses {
+namespace KillUnwantedProcesses.KillableProcesses; 
 
-    public class AdobeCoreSync: KillableProcess {
+public class AdobeCoreSync: KillableProcess {
 
-        public override string processName { get; } = "CoreSync";
+    public override string processName { get; } = "CoreSync";
 
-        public override string name { get; } = "Adobe Sync";
+    public override string name { get; } = "Adobe Sync";
 
-        public override bool shouldKill() {
-            return base.shouldKill() && !isProcessRunning(new AdobeDesktopService().processName);
-        }
-
+    public override bool shouldKill() {
+        return base.shouldKill() && !isProcessRunning(new AdobeDesktopService().processName);
     }
 
 }

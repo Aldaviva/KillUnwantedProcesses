@@ -1,13 +1,11 @@
 ﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-namespace KillUnwantedProcesses.KillableProcesses {
+namespace KillUnwantedProcesses.KillableProcesses; 
 
-    public class VmUsbArbService: KillableService {
+public class VmUsbArbService: KillableService {
 
-        protected override string serviceName { get; } = "VMUSBArbService";
+    protected override string serviceName { get; } = "VMUSBArbService";
 
-        public override string name { get; } = "VMware USB Arbitration Service";
-
-    }
+    public override string name { get; } = "VMware USB Arbitration Service";
 
 }

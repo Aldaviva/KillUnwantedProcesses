@@ -1,22 +1,20 @@
-﻿using System.ServiceProcess;
+﻿#nullable enable
+
+using System.ServiceProcess;
 using KillUnwantedProcesses.KillableProcesses.Base;
 
-#nullable enable
+namespace KillUnwantedProcesses.KillableProcesses; 
 
-namespace KillUnwantedProcesses.KillableProcesses {
+public class LogitechGHub: KillableService {
 
-    public class LogitechGHub: KillableService {
+    protected override string serviceName { get; } = "LGHUBUpdaterService";
 
-        protected override string serviceName { get; } = "LGHUBUpdaterService";
+    public override string name { get; } = "Logitech G Hub";
 
-        public override string name { get; } = "Logitech G Hub";
+    protected override ServiceStartMode? desiredServiceStartMode { get; } = ServiceStartMode.Disabled;
 
-        protected override ServiceStartMode? desiredServiceStartMode { get; } = ServiceStartMode.Disabled;
-
-        public override bool shouldKill() {
-            return base.shouldKill() && !isProcessRunning("lghub");
-        }
-
+    public override bool shouldKill() {
+        return base.shouldKill() && !isProcessRunning("lghub");
     }
 
 }

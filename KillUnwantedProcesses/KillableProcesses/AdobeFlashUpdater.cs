@@ -1,13 +1,11 @@
 ﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-namespace KillUnwantedProcesses.KillableProcesses {
+namespace KillUnwantedProcesses.KillableProcesses; 
 
-    public class AdobeFlashUpdater: KillableService {
+public class AdobeFlashUpdater: KillableService {
 
-        public override string name { get; } = "Adobe Flash Updater";
+    public override string name { get; } = "Adobe Flash Updater";
 
-        protected override string serviceName { get; } = "AdobeFlashPlayerUpdateSvc";
-
-    }
+    protected override string serviceName { get; } = "AdobeFlashPlayerUpdateSvc";
 
 }

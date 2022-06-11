@@ -1,13 +1,11 @@
 ﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-namespace KillUnwantedProcesses.KillableProcesses {
+namespace KillUnwantedProcesses.KillableProcesses; 
 
-    public class AdobeAcrobatUpdater: KillableService {
+public class AdobeAcrobatUpdater: KillableService {
 
-        public override string name { get; } = "Adobe Acrobat Updater";
+    public override string name { get; } = "Adobe Acrobat Updater";
 
-        protected override string serviceName { get; } = "AdobeARMservice";
-
-    }
+    protected override string serviceName { get; } = "AdobeARMservice";
 
 }

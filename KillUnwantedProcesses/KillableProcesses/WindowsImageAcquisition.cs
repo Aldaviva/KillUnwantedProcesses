@@ -1,15 +1,13 @@
-﻿using KillUnwantedProcesses.KillableProcesses.Base;
+﻿#nullable enable
 
-#nullable enable
+using KillUnwantedProcesses.KillableProcesses.Base;
 
-namespace KillUnwantedProcesses.KillableProcesses {
+namespace KillUnwantedProcesses.KillableProcesses; 
 
-    public class WindowsImageAcquisition: KillableService {
+public class WindowsImageAcquisition: KillableService {
 
-        protected override string serviceName { get; } = "stisvc";
+    protected override string serviceName { get; } = "stisvc";
 
-        public override string name { get; } = "Windows Image Acquisition";
-
-    }
+    public override string name { get; } = "Windows Image Acquisition";
 
 }

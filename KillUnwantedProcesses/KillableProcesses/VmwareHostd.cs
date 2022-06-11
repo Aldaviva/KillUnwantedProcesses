@@ -1,13 +1,11 @@
 ﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
-namespace KillUnwantedProcesses.KillableProcesses {
+namespace KillUnwantedProcesses.KillableProcesses; 
 
-    public class VmwareHostd: KillableService {
+public class VmwareHostd: KillableService {
 
-        protected override string serviceName { get; } = "VMwareHostd";
+    protected override string serviceName { get; } = "VMwareHostd";
 
-        public override string name { get; } = "VMware Workstation Server";
-
-    }
+    public override string name { get; } = "VMware Workstation Server";
 
 }
