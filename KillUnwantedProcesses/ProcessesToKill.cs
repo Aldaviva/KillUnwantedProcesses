@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+
+using System.Collections.Generic;
 using KillUnwantedProcesses.KillableProcesses;
 using KillUnwantedProcesses.KillableProcesses.Base;
 
@@ -15,11 +17,13 @@ namespace KillUnwantedProcesses {
             new AdobeCreativeCloudExperience(),
             new AdobeCreativeCloudLibraries(),
             new AdobeDesktopService(),
+            new AdobeExtensionsService(),
             new AdobeFlashUpdater(),
             new AdobeGenuineMonitorService(),
             new AdobeGenuineSoftwareIntegrityService(),
             new AdobeNotificationClient(),
             new AdobeUpdateService(),
+            new AutodeskAccessServiceHost(),
             new AutodeskLicensingService(),
             new DotNetRuntimeOptimizationService(),
             new FlexNetLicensingService(),
@@ -34,7 +38,7 @@ namespace KillUnwantedProcesses {
             new VmUsbArbService(),
             new VmwareHostd(),
             new VmwareNatService(),
-            // new WindowsImageAcquisition()
+            // new WindowsImageAcquisition(),
         };
 
     }

@@ -1,5 +1,7 @@
 ﻿using KillUnwantedProcesses.KillableProcesses.Base;
 
+#nullable enable
+
 namespace KillUnwantedProcesses.KillableProcesses {
 
     public class WindowsImageAcquisition: KillableService {

@@ -63,6 +63,7 @@
     <Compile Include="KillableProcesses\AdobeCoreSync.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudExperience.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudLibraries.cs" />
+    <Compile Include="KillableProcesses\AdobeExtensionsService.cs" />
     <Compile Include="KillableProcesses\AdobeGenuineMonitorService.cs" />
     <Compile Include="KillableProcesses\AdobeUpdateService.cs" />
     <Compile Include="KillableProcesses\AdobeFlashUpdater.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="KillableProcesses\AdobeDesktopService.cs" />
     <Compile Include="KillableProcesses\AdobeGenuineSoftwareIntegrityService.cs" />
     <Compile Include="KillableProcesses\AdobeNotificationClient.cs" />
+    <Compile Include="KillableProcesses\AutodeskAccessServiceHost.cs" />
     <Compile Include="KillableProcesses\AutodeskLicensingService.cs" />
     <Compile Include="KillableProcesses\Base\KillableBase.cs" />
     <Compile Include="KillableProcesses\Base\KillableService.cs" />
