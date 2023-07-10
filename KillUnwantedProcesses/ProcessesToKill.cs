@@ -27,18 +27,15 @@ public static class ProcessesToKill {
         new AutodeskLicensingService(),
         new DotNetRuntimeOptimizationService(),
         new FlexNetLicensingService(),
-        // new GpgAgent(),
-        // new LogitechGHub(),
+        new LogitechGHubSystemTray(),
         new NvidiaControlPanel(),
         new OfficeDocumentCache(),
         new VirtualCloneDrive(),
         new VisualStudioCompiler(),
         new VmAuthdService(),
         new VmnetDhcpService(),
-        // new VmUsbArbService(),
         new VmwareHostd(),
-        new VmwareNatService(),
-        // new WindowsImageAcquisition(),
+        new VmwareNatService()
     };
 
 }

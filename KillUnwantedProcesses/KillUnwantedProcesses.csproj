@@ -93,6 +93,7 @@
     <Compile Include="KillableProcesses\VisualStudioCompiler.cs" />
     <Compile Include="KillableProcesses\WindowsImageAcquisition.cs" />
     <Compile Include="KillableProcesses\Base\UwpHelpers.cs" />
+    <Compile Include="KillableProcesses\LogitechGHubSystemTray.cs" />
     <Compile Include="ProcessesToKill.cs" />
     <Compile Include="Utilities\ParentProcessUtilities.cs" />
     <Compile Include="KillableProcesses\Base\Killable.cs" />

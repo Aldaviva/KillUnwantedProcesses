@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace KillUnwantedProcesses.Utilities; 
+namespace KillUnwantedProcesses.Utilities;
 
 /// <summary>A utility class to determine a process parent.</summary>
 /// <remarks><a href="https://stackoverflow.com/a/3346055/979493">Source</a></remarks>
@@ -35,7 +35,7 @@ internal readonly struct ParentProcessUtilities {
     /// <param name="id">The process id.</param>
     /// <returns>An instance of the Process class.</returns>
     public static Process? getParentProcess(int id) {
-        Process? process = Process.GetProcessById(id);
+        Process process = Process.GetProcessById(id);
         return getParentProcess(process);
     }
 
@@ -75,7 +75,7 @@ internal readonly struct ParentProcessUtilities {
         return allProcesses.SelectMany(descendent => {
             bool isDescendentOfParent = false;
             try {
-                Process? descendentParent = getParentProcess(descendent);
+                using Process? descendentParent = getParentProcess(descendent);
                 isDescendentOfParent = descendentParent?.Id == parent.Id;
             } catch (Exception) {
                 //leave isDescendentOfParent false
