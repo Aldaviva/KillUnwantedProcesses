@@ -2,7 +2,7 @@
 
 using KillUnwantedProcesses.KillableProcesses.Base;
 
-namespace KillUnwantedProcesses.KillableProcesses; 
+namespace KillUnwantedProcesses.KillableProcesses;
 
 public class WindowsImageAcquisition: KillableService {
 

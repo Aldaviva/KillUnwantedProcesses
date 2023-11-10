@@ -1,7 +1,9 @@
-﻿using System;
-using KillUnwantedProcesses.KillableProcesses.Base;
+﻿#nullable enable
 
-namespace KillUnwantedProcesses.KillableProcesses; 
+using KillUnwantedProcesses.KillableProcesses.Base;
+using System;
+
+namespace KillUnwantedProcesses.KillableProcesses;
 
 public class VmAuthdService: KillableService {
 

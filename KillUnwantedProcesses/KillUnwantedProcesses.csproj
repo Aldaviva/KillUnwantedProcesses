@@ -67,7 +67,6 @@
     <Compile Include="KillableProcesses\AdobeExtensionsService.cs" />
     <Compile Include="KillableProcesses\AdobeGenuineMonitorService.cs" />
     <Compile Include="KillableProcesses\AdobeUpdateService.cs" />
-    <Compile Include="KillableProcesses\AdobeFlashUpdater.cs" />
     <Compile Include="KillableProcesses\AdobeAcrobatUpdater.cs" />
     <Compile Include="KillableProcesses\AdobeCollabSync.cs" />
     <Compile Include="KillableProcesses\AdobeDesktopService.cs" />
@@ -80,7 +79,6 @@
     <Compile Include="KillableProcesses\DotNetRuntimeOptimizationService.cs" />
     <Compile Include="KillableProcesses\FlexNetLicensingService.cs" />
     <Compile Include="KillableProcesses\Base\KillableProcess.cs" />
-    <Compile Include="KillableProcesses\GpgAgent.cs" />
     <Compile Include="KillableProcesses\LogitechGHub.cs" />
     <Compile Include="KillableProcesses\OfficeDocumentCache.cs" />
     <Compile Include="KillableProcesses\VmAuthdService.cs" />

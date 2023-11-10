@@ -1,7 +1,9 @@
-﻿using KillUnwantedProcesses.KillableProcesses.Base;
+﻿#nullable enable
+
+using KillUnwantedProcesses.KillableProcesses.Base;
 using Microsoft.Win32;
 
-namespace KillUnwantedProcesses.KillableProcesses; 
+namespace KillUnwantedProcesses.KillableProcesses;
 
 public class VirtualCloneDrive: KillableProcess {
 

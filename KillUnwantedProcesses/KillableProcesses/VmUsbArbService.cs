@@ -1,6 +1,8 @@
-﻿using KillUnwantedProcesses.KillableProcesses.Base;
+﻿#nullable enable
 
-namespace KillUnwantedProcesses.KillableProcesses; 
+using KillUnwantedProcesses.KillableProcesses.Base;
+
+namespace KillUnwantedProcesses.KillableProcesses;
 
 public class VmUsbArbService: KillableService {
 

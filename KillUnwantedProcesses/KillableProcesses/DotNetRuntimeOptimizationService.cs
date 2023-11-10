@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+
+using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management;
 using System.ServiceProcess;
-using KillUnwantedProcesses.KillableProcesses.Base;
 
-namespace KillUnwantedProcesses.KillableProcesses; 
+namespace KillUnwantedProcesses.KillableProcesses;
 
 public class DotNetRuntimeOptimizationService: KillableBase {
 
@@ -25,7 +27,7 @@ public class DotNetRuntimeOptimizationService: KillableBase {
 
     private static IEnumerable<string> findServiceNames(string nameQuery) {
 
-        using ManagementObjectSearcher searcher = new ManagementObjectSearcher(new SelectQuery("Win32_Service", $"Name LIKE '{nameQuery}'"));
+        using ManagementObjectSearcher searcher = new(new SelectQuery("Win32_Service", $"Name LIKE '{nameQuery}'"));
 
         using ManagementObjectCollection results = searcher.Get();
 
