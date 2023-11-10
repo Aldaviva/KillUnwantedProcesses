@@ -1,8 +1,8 @@
 ﻿#nullable enable
 
-using System.Collections.Generic;
 using KillUnwantedProcesses.KillableProcesses;
 using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
 
 namespace KillUnwantedProcesses;
 
@@ -14,6 +14,7 @@ public static class ProcessesToKill {
         new AdobeAcrobatUpdater(),
         new AdobeCollabSync(),
         new AdobeCoreSync(),
+        new AdobeCrashProcessor(),
         new AdobeCreativeCloudExperience(),
         new AdobeCreativeCloudLibraries(),
         new AdobeDesktopService(),

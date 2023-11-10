@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KillableProcesses\AcroTray.cs" />
+    <Compile Include="KillableProcesses\AdobeCrashProcessor.cs" />
     <Compile Include="KillableProcesses\AdobeCoreSync.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudExperience.cs" />
     <Compile Include="KillableProcesses\AdobeCreativeCloudLibraries.cs" />
