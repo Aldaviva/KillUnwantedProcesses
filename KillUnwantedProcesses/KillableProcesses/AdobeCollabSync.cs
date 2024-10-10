@@ -1,6 +1,7 @@
 ﻿#nullable enable
 
 using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
 
 namespace KillUnwantedProcesses.KillableProcesses;
 
@@ -10,8 +11,6 @@ public class AdobeCollabSync: KillableProcess {
 
     public override string name { get; } = "Adobe Collaboration Synchronizer";
 
-    public override bool shouldKill() {
-        return base.shouldKill() && !isProcessRunning("Acrobat");
-    }
+    protected override IEnumerable<string> saviorProcesses { get; } = ["Acrobat"];
 
 }

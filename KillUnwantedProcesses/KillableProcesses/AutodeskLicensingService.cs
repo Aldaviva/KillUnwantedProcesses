@@ -1,7 +1,8 @@
 ﻿#nullable enable
 
-using System.ServiceProcess;
 using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
+using System.ServiceProcess;
 
 namespace KillUnwantedProcesses.KillableProcesses;
 
@@ -11,9 +12,7 @@ public class AutodeskLicensingService: KillableService {
 
     public override string name => "Autodesk Licensing Service";
 
-    public override bool shouldKill() {
-        return base.shouldKill() && !isProcessRunning("Inventor") && !isProcessRunning("InventorOEM");
-    }
+    protected override IEnumerable<string> saviorProcesses { get; } = ["Inventor", "InventorOEM"];
 
     /*
      * Manual mode will make Inventor 2021 take a little longer to start than automatic, since it has to use AdskLicensingInstHelper.exe to start this service, but it does happen

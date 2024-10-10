@@ -14,9 +14,7 @@ public class DotNetRuntimeOptimizationService: KillableBase {
 
     public override string name { get; } = ".NET Runtime Optimization Service";
 
-    public override bool shouldKill() {
-        return findServiceNames(SERVICE_NAME_PATTERN).Any(isServiceRunning);
-    }
+    public override bool shouldKill() => findServiceNames(SERVICE_NAME_PATTERN).Any(isServiceRunning);
 
     public override void kill() {
         IEnumerable<string> runningServiceNames = findServiceNames(SERVICE_NAME_PATTERN).Where(isServiceRunning);
@@ -26,12 +24,11 @@ public class DotNetRuntimeOptimizationService: KillableBase {
     }
 
     private static IEnumerable<string> findServiceNames(string nameQuery) {
-
         using ManagementObjectSearcher searcher = new(new SelectQuery("Win32_Service", $"Name LIKE '{nameQuery}'"));
 
         using ManagementObjectCollection results = searcher.Get();
 
-        ICollection<string> serviceNameResults = new HashSet<string>(results.Count);
+        ISet<string> serviceNameResults = new HashSet<string>(results.Count);
 
         using ManagementObjectCollection.ManagementObjectEnumerator resultsEnumerator = results.GetEnumerator();
 

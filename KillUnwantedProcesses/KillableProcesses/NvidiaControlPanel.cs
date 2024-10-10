@@ -1,6 +1,7 @@
 ﻿#nullable enable
 
 using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
 using System.ServiceProcess;
 
 namespace KillUnwantedProcesses.KillableProcesses;
@@ -13,8 +14,6 @@ public class NvidiaControlPanel: KillableService {
 
     protected override ServiceStartMode? desiredServiceStartMode { get; } = ServiceStartMode.Manual;
 
-    public override bool shouldKill() {
-        return base.shouldKill() && !isProcessRunning("nvcplui");
-    }
+    protected override IEnumerable<string> saviorProcesses { get; } = ["nvcplui"];
 
 }

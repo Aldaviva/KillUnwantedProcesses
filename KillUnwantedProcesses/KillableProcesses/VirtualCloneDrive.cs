@@ -2,20 +2,23 @@
 
 using KillUnwantedProcesses.KillableProcesses.Base;
 using Microsoft.Win32;
+using System.Collections.Generic;
 
 namespace KillUnwantedProcesses.KillableProcesses;
 
 public class VirtualCloneDrive: KillableProcess {
 
+    private const string REGISTRY_PATH = @"HKEY_CURRENT_USER\Software\Elaborate Bytes\VirtualCloneDrive";
+
     public override string processName { get; } = "VCDDaemon";
 
     public override string name { get; } = "Virtual CloneDrive";
 
-    public override bool shouldKill() {
-        const string REGISTRY_PATH  = @"HKEY_CURRENT_USER\Software\Elaborate Bytes\VirtualCloneDrive";
-        int          numberOfDrives = (int) (Registry.GetValue(REGISTRY_PATH, "NumberOfDrives", 0) ?? 0);
+    protected override IEnumerable<string> saviorProcesses { get; } = ["VCDPrefs"];
 
-        return numberOfDrives == 0 && !isProcessRunning("VCDPrefs") && base.shouldKill();
+    public override bool shouldKill() {
+        int numberOfDrives = Registry.GetValue(REGISTRY_PATH, "NumberOfDrives", 0) as int? ?? 0;
+        return numberOfDrives == 0 && base.shouldKill();
     }
 
 }

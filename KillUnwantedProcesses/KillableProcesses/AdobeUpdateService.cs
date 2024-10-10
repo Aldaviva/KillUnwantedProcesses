@@ -1,8 +1,9 @@
 ﻿#nullable enable
 
 using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
 
-namespace KillUnwantedProcesses.KillableProcesses; 
+namespace KillUnwantedProcesses.KillableProcesses;
 
 public class AdobeUpdateService: KillableService {
 
@@ -10,8 +11,6 @@ public class AdobeUpdateService: KillableService {
 
     public override string name { get; } = "Adobe Update Service";
 
-    public override bool shouldKill() {
-        return base.shouldKill() && !isProcessRunning(new AdobeDesktopService().processName);
-    }
+    protected override IEnumerable<string> saviorProcesses { get; } = [new AdobeDesktopService().processName];
 
 }

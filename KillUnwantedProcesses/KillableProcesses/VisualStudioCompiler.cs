@@ -1,6 +1,7 @@
 ﻿#nullable enable
 
 using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
 
 namespace KillUnwantedProcesses.KillableProcesses;
 
@@ -10,8 +11,6 @@ public class VisualStudioCompiler: KillableProcess {
 
     public override string name { get; } = "Visual Studio Compiler";
 
-    public override bool shouldKill() {
-        return base.shouldKill() && !isProcessRunning("devenv");
-    }
+    protected override IEnumerable<string> saviorProcesses { get; } = ["devenv"];
 
 }

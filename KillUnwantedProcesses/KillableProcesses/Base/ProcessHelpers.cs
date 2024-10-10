@@ -1,13 +1,13 @@
 ﻿#nullable enable
 
+using KillUnwantedProcesses.Utilities;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using KillUnwantedProcesses.Utilities;
 
-namespace KillUnwantedProcesses.KillableProcesses.Base; 
+namespace KillUnwantedProcesses.KillableProcesses.Base;
 
 internal static class ProcessHelpers {
 
@@ -15,28 +15,28 @@ internal static class ProcessHelpers {
         processName = stripExeSuffix(processName);
         Process[] processesToKill = Process.GetProcessesByName(processName);
         foreach (Process processToKill in processesToKill) {
-            using Process kill = processToKill;
-            if (alsoKillChildren) {
-                foreach (Process descendentToKill in ParentProcessUtilities.getDescendentProcesses(processToKill)) {
-                    try {
-                        killProcess(descendentToKill);
-                    } catch (Exception) {
-                        //probably already closed or can't be killed
-                    }
-                }
-            }
-
-            try {
-                killProcess(processToKill);
-            } catch (Exception) {
-                //probably already closed or can't be killed
-            }
+            killProcess(processToKill, alsoKillChildren);
         }
     }
 
-    private static void killProcess(Process process) {
-        Console.WriteLine($"Killing {process.ProcessName} ({process.Id})");
-        process.Kill();
+    public static void killProcess(Process process, bool alsoKillChildren = false) {
+        using Process kill = process;
+        if (alsoKillChildren) {
+            foreach (Process descendentToKill in ParentProcessUtilities.getDescendentProcesses(process)) {
+                try {
+                    killProcess(descendentToKill);
+                } catch (Exception) {
+                    //probably already closed or can't be killed
+                }
+            }
+        }
+
+        try {
+            Console.WriteLine($"Killing {process.ProcessName} ({process.Id})");
+            process.Kill();
+        } catch (Exception) {
+            //probably already closed or can't be killed
+        }
     }
 
     public static bool isProcessRunning(string processName) {
@@ -66,10 +66,10 @@ internal static class ProcessHelpers {
     #region pinvoke
 
     [DllImport("ntdll.dll", SetLastError = true)]
-    internal static extern NtStatus NtQueryInformationProcess(IntPtr                              hProcess,                        ProcessInfoClass processInfoClass,
-                                                              out ProcessExtendedBasicInformation processExtendedBasicInformation, int              inputSize, out int resultSize);
+    private static extern NtStatus NtQueryInformationProcess(IntPtr hProcess, ProcessInfoClass processInfoClass,
+                                                             out ProcessExtendedBasicInformation processExtendedBasicInformation, int inputSize, out int resultSize);
 
-    internal struct ProcessExtendedBasicInformation {
+    private struct ProcessExtendedBasicInformation {
 
         public UIntPtr                 size;
         public ProcessBasicInformation basicInfo;
@@ -93,7 +93,7 @@ internal static class ProcessHelpers {
 
     }
 
-    internal struct ProcessBasicInformation {
+    private struct ProcessBasicInformation {
 
         public NtStatus exitStatus;
         public IntPtr   pebBaseAddress;
@@ -104,7 +104,7 @@ internal static class ProcessHelpers {
 
     }
 
-    internal enum NtStatus: uint {
+    private enum NtStatus: uint {
 
         // Success
         SUCCESS                          = 0x00000000,
@@ -447,7 +447,7 @@ internal static class ProcessHelpers {
 
     }
 
-    internal enum ProcessInfoClass {
+    private enum ProcessInfoClass {
 
         PROCESS_BASIC_INFORMATION                          = 0x00,
         PROCESS_QUOTA_LIMITS                               = 0x01,

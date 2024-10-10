@@ -3,11 +3,11 @@
 using System.Collections.ObjectModel;
 using System.Management.Automation;
 
-namespace KillUnwantedProcesses.KillableProcesses.Base; 
+namespace KillUnwantedProcesses.KillableProcesses.Base;
 
-public static class UwpHelpers {
+public static class AppXHelpers {
 
-    public static bool isUwpAppxPackageInstalled(string packageName) {
+    public static bool isAppxPackageInstalled(string packageName) {
         PowerShell pipeline = PowerShell.Create();
         pipeline.AddCommand("Get-AppxPackage")
             .AddParameter("Name", packageName);
@@ -15,7 +15,7 @@ public static class UwpHelpers {
         return results.Count != 0;
     }
 
-    public static void uninstallUwpAppxPackage(string packageName) {
+    public static void uninstallAppxPackage(string packageName) {
         PowerShell pipeline = PowerShell.Create();
         pipeline.AddCommand("Get-AppxPackage")
             .AddParameter("Name", packageName);

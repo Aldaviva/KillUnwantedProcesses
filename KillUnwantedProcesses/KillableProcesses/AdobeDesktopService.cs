@@ -1,6 +1,7 @@
 ﻿#nullable enable
 
 using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
 
 namespace KillUnwantedProcesses.KillableProcesses;
 
@@ -10,8 +11,6 @@ public class AdobeDesktopService: KillableProcess {
 
     public override string name { get; } = "Adobe Desktop Service";
 
-    public override bool shouldKill() {
-        return !isProcessRunning("Creative Cloud") && base.shouldKill();
-    }
+    protected override IEnumerable<string> saviorProcesses { get; } = ["Creative Cloud"];
 
 }

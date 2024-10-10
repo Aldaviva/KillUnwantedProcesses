@@ -1,6 +1,6 @@
 ﻿#nullable enable
 
-namespace KillUnwantedProcesses.KillableProcesses.Base; 
+namespace KillUnwantedProcesses.KillableProcesses.Base;
 
 public abstract class KillableProcess: KillableBase {
 
@@ -11,12 +11,8 @@ public abstract class KillableProcess: KillableBase {
 
     protected virtual bool alsoKillChildren { get; } = true;
 
-    public override bool shouldKill() {
-        return isProcessRunning(processName) && base.shouldKill();
-    }
+    public override bool shouldKill() => isProcessRunning(processName) && base.shouldKill();
 
-    public override void kill() {
-        killProcess(processName, alsoKillChildren);
-    }
+    public override void kill() => killProcess(processName, alsoKillChildren);
 
 }

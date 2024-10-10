@@ -11,7 +11,7 @@ namespace KillUnwantedProcesses.Utilities;
 /// <summary>A utility class to determine a process parent.</summary>
 /// <remarks><a href="https://stackoverflow.com/a/3346055/979493">Source</a></remarks>
 [StructLayout(LayoutKind.Sequential)]
-internal readonly struct ParentProcessUtilities {
+public readonly struct ParentProcessUtilities {
 
     // These members must match PROCESS_BASIC_INFORMATION
     private readonly IntPtr Reserved1;
@@ -22,7 +22,7 @@ internal readonly struct ParentProcessUtilities {
     private readonly IntPtr InheritedFromUniqueProcessId;
 
     [DllImport("ntdll.dll")]
-    private static extern int NtQueryInformationProcess(IntPtr                     processHandle,      int processInformationClass,
+    private static extern int NtQueryInformationProcess(IntPtr processHandle, int processInformationClass,
                                                         ref ParentProcessUtilities processInformation, int processInformationLength, out int returnLength);
 
     /// <summary>Gets the parent process of the current process.</summary>

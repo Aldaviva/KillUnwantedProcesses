@@ -1,6 +1,7 @@
 ﻿#nullable enable
 
 using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
 
 namespace KillUnwantedProcesses.KillableProcesses;
 
@@ -10,13 +11,6 @@ public class OfficeDocumentCache: KillableProcess {
 
     public override string name { get; } = "Office Document Cache";
 
-    public override bool shouldKill() {
-        return base.shouldKill() &&
-            !isProcessRunning("EXCEL") &&
-            !isProcessRunning("WINWORD") &&
-            !isProcessRunning("ONENOTE") &&
-            !isProcessRunning("POWERPNT.EXE") &&
-            !isProcessRunning("OUTLOOK.EXE");
-    }
+    protected override IEnumerable<string> saviorProcesses { get; } = ["EXCEL", "WINWORD", "ONENOTE", "POWERPNT", "OUTLOOK"];
 
 }

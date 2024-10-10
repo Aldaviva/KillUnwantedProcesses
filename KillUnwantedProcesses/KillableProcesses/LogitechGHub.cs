@@ -1,9 +1,10 @@
 ﻿#nullable enable
 
-using System.ServiceProcess;
 using KillUnwantedProcesses.KillableProcesses.Base;
+using System.Collections.Generic;
+using System.ServiceProcess;
 
-namespace KillUnwantedProcesses.KillableProcesses; 
+namespace KillUnwantedProcesses.KillableProcesses;
 
 public class LogitechGHub: KillableService {
 
@@ -13,8 +14,6 @@ public class LogitechGHub: KillableService {
 
     protected override ServiceStartMode? desiredServiceStartMode { get; } = ServiceStartMode.Disabled;
 
-    public override bool shouldKill() {
-        return base.shouldKill() && !isProcessRunning("lghub");
-    }
+    protected override IEnumerable<string> saviorProcesses { get; } = ["lghub"];
 
 }

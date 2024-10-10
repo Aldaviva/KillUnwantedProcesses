@@ -13,6 +13,8 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -23,8 +25,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,8 +34,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -81,6 +79,7 @@
     <Compile Include="KillableProcesses\Base\KillableProcess.cs" />
     <Compile Include="KillableProcesses\LogitechGHub.cs" />
     <Compile Include="KillableProcesses\OfficeDocumentCache.cs" />
+    <Compile Include="KillableProcesses\SearchAppEdgeWebView.cs" />
     <Compile Include="KillableProcesses\VmAuthdService.cs" />
     <Compile Include="KillableProcesses\VmnetDhcpService.cs" />
     <Compile Include="KillableProcesses\VmUsbArbService.cs" />
@@ -91,7 +90,7 @@
     <Compile Include="KillableProcesses\Base\ServiceHelpers.cs" />
     <Compile Include="KillableProcesses\VisualStudioCompiler.cs" />
     <Compile Include="KillableProcesses\WindowsImageAcquisition.cs" />
-    <Compile Include="KillableProcesses\Base\UwpHelpers.cs" />
+    <Compile Include="KillableProcesses\Base\AppXHelpers.cs" />
     <Compile Include="KillableProcesses\LogitechGHubSystemTray.cs" />
     <Compile Include="ProcessesToKill.cs" />
     <Compile Include="Utilities\ParentProcessUtilities.cs" />

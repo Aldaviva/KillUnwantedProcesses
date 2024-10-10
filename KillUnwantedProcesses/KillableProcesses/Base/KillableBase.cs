@@ -1,14 +1,16 @@
 ﻿#nullable enable
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceProcess;
 
-namespace KillUnwantedProcesses.KillableProcesses.Base; 
+namespace KillUnwantedProcesses.KillableProcesses.Base;
 
 public abstract class KillableBase: Killable {
 
     public abstract string name { get; }
+
     public abstract void kill();
 
     /// <summary>
@@ -16,11 +18,15 @@ public abstract class KillableBase: Killable {
     /// successfully.
     /// </summary>
     /// <param name="processName">The base name of the executable, with or without the trailing <c>.exe</c>.</param>
-    /// <param name="alsoKillChildren">If <c>true</c>, descendent processes (those whose parents or higher ancestors have the given
+    /// <param name="alsoKillChildren">If <c>true</c>, descendant processes (those whose parents or higher ancestors have the given
     /// <c>processName</c>) should also be killed. If <c>false</c>, leave them running and only kill the process with the given
     /// basename.</param>
     protected static void killProcess(string processName, bool alsoKillChildren = false) {
         ProcessHelpers.killProcess(processName, alsoKillChildren);
+    }
+
+    protected static void killProcess(Process process, bool alsoKillChildren = false) {
+        ProcessHelpers.killProcess(process, alsoKillChildren);
     }
 
     /// <summary>Get whether or not a process is running on the current computer.</summary>
@@ -48,17 +54,17 @@ public abstract class KillableBase: Killable {
     }
 
     protected static bool isUwpAppxPackageInstalled(string packageName) {
-        return UwpHelpers.isUwpAppxPackageInstalled(packageName);
+        return AppXHelpers.isAppxPackageInstalled(packageName);
     }
 
     protected static void uninstallUwpAppxPackage(string packageName) {
-        UwpHelpers.uninstallUwpAppxPackage(packageName);
+        AppXHelpers.uninstallAppxPackage(packageName);
     }
 
     /// <summary>
     /// If any of these savior processes are running, don't kill this process. Additional conditions can be specified by overriding <see cref="shouldKill"/>.
     /// </summary>
-    protected virtual IEnumerable<string> saviorProcesses => Enumerable.Empty<string>();
+    protected virtual IEnumerable<string> saviorProcesses => [];
 
     public virtual bool shouldKill() => !saviorProcesses.Any(isProcessRunning);
 

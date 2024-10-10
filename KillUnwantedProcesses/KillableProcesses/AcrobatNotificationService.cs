@@ -10,12 +10,8 @@ public class AcrobatNotificationService: KillableBase {
 
     public override string name { get; } = "Acrobat Notification Service";
 
-    public override bool shouldKill() {
-        return isUwpAppxPackageInstalled(APPX_PACKAGE_NAME);
-    }
+    public override bool shouldKill() => isUwpAppxPackageInstalled(APPX_PACKAGE_NAME);
 
-    public override void kill() {
-        uninstallUwpAppxPackage(APPX_PACKAGE_NAME);
-    }
+    public override void kill() => uninstallUwpAppxPackage(APPX_PACKAGE_NAME);
 
 }
