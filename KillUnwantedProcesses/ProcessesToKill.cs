@@ -27,7 +27,6 @@ public static class ProcessesToKill {
         new AutodeskLicensingService(),
         new FlexNetLicensingService(),
         new LogitechGHubSystemTray(),
-        new NvidiaControlPanel(),
         new OfficeDocumentCache(),
         new VirtualCloneDrive(),
         new VisualStudioCompiler(),
