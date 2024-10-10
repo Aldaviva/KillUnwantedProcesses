@@ -28,6 +28,7 @@ public static class ProcessesToKill {
         new FlexNetLicensingService(),
         new LogitechGHubSystemTray(),
         new OfficeDocumentCache(),
+        new SearchAppEdgeWebView(),
         new VirtualCloneDrive(),
         new VisualStudioCompiler(),
         new VmAuthdService(),
