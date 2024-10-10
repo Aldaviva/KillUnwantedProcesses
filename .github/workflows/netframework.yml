@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - name: Clone
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
@@ -30,7 +30,7 @@ jobs:
 
     # Upload the EXE: https://github.com/marketplace/actions/upload-a-build-artifact
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.ProjectName }}.exe
         path: ${{ env.ProjectName }}\bin\Release\*.exe
