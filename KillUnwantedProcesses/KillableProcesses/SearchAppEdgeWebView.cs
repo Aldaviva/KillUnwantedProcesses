@@ -32,8 +32,7 @@ public class SearchAppEdgeWebView: KillableBase {
             using Process? parent = edgeWebView.GetParentProcess();
             try {
                 string? parentName = parent?.ProcessName;
-                if (!"SearchApp".Equals(parentName, StringComparison.OrdinalIgnoreCase) &&
-                    !"SearchHost".Equals(parentName, StringComparison.OrdinalIgnoreCase)) {
+                if (!"SearchApp".Equals(parentName, StringComparison.OrdinalIgnoreCase)) {
                     continue;
                 }
             } catch (InvalidOperationException) {
