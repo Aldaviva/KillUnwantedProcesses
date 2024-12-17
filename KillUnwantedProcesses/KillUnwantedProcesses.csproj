@@ -15,6 +15,7 @@
     <TargetFrameworkProfile />
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,6 +56,12 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="Unfucked">
+      <HintPath>..\..\Unfucked\Unfucked\bin\Debug\netstandard2.0\Unfucked.dll</HintPath>
+    </Reference>
+    <Reference Include="Unfucked.Windows">
+      <HintPath>..\..\Unfucked\Windows\bin\Debug\net462\Unfucked.Windows.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KillableProcesses\AcroTray.cs" />
@@ -93,7 +100,6 @@
     <Compile Include="KillableProcesses\Base\AppXHelpers.cs" />
     <Compile Include="KillableProcesses\LogitechGHubSystemTray.cs" />
     <Compile Include="ProcessesToKill.cs" />
-    <Compile Include="Utilities\ParentProcessUtilities.cs" />
     <Compile Include="KillableProcesses\Base\Killable.cs" />
     <Compile Include="KillableProcesses\NvidiaControlPanel.cs" />
     <Compile Include="UnwantedProcessKiller.cs" />
@@ -106,6 +112,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dynamite.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task">
+      <Version>2.0.34.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

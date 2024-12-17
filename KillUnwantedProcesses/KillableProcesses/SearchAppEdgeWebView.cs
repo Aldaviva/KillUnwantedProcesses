@@ -1,11 +1,11 @@
 ﻿#nullable enable
 
 using KillUnwantedProcesses.KillableProcesses.Base;
-using KillUnwantedProcesses.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Unfucked.Windows;
 
 namespace KillUnwantedProcesses.KillableProcesses;
 
@@ -27,11 +27,19 @@ public class SearchAppEdgeWebView: KillableBase {
     }
 
     private static IEnumerable<Process> getProcessesToKill() {
-        foreach (Process edgeWebView in Process.GetProcessesByName("msedgewebview2")) {
-            using Process? parent = ParentProcessUtilities.getParentProcess(edgeWebView);
-            if ("SearchApp".Equals(parent?.ProcessName, StringComparison.OrdinalIgnoreCase)) {
-                yield return edgeWebView;
+        Process[] webviews = Process.GetProcessesByName("msedgewebview2");
+        foreach (Process edgeWebView in webviews) {
+            using Process? parent = edgeWebView.GetParentProcess();
+            try {
+                string? parentName = parent?.ProcessName;
+                if (!"SearchApp".Equals(parentName, StringComparison.OrdinalIgnoreCase) &&
+                    !"SearchHost".Equals(parentName, StringComparison.OrdinalIgnoreCase)) {
+                    continue;
+                }
+            } catch (InvalidOperationException) {
+                continue;
             }
+            yield return edgeWebView;
         }
     }
 
