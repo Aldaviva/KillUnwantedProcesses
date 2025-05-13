@@ -4,9 +4,9 @@
     ".NETFramework,Version=v4.8": {
       "ILRepack.Lib.MSBuild.Task": {
         "type": "Direct",
-        "requested": "[2.0.34.2, )",
-        "resolved": "2.0.34.2",
-        "contentHash": "tXuZZbIqiODq/yESIz04p97ZLCy4Uh21cSJdvKEl6T4BBQ5s7QnVycg2lfXwtXuhis6pwH5MuEQCi4pKP+xvsA=="
+        "requested": "[2.0.40, )",
+        "resolved": "2.0.40",
+        "contentHash": "sKv16jwPa482GHaOScPy7eHpbJpfHIfaANLMHZHRwimX8HalbcoNRXX3GwhjdSCvMFKgToHgGCAVHz+IT6fTmA=="
       }
     },
     ".NETFramework,Version=v4.8/win": {},

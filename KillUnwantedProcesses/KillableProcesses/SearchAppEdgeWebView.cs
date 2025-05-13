@@ -9,6 +9,10 @@ using Unfucked.Windows;
 
 namespace KillUnwantedProcesses.KillableProcesses;
 
+/**
+ * On Windows 10, kill msedgewebview2 children of SearchApp.
+ * On Windows 11, the parent process is SearchHost instead of SearchApp, and the child processes shouldn't be killed because the parent immediately restarts then anyway.
+ */
 public class SearchAppEdgeWebView: KillableBase {
 
     public override string name { get; } = "MSEdgeWebView2 children of SearchApp";

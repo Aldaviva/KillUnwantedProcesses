@@ -21,38 +21,37 @@ This is a program which finds specific running processes on your computer and ki
 - [.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework)
 
 ## Installation
-1. Download and extract [`KillUnwantedProcesses.exe`](https://nightly.link/Aldaviva/KillUnwantedProcesses/workflows/netframework/master/KillUnwantedProcesses.exe.zip) from the [most recent successful build](https://github.com/Aldaviva/KillUnwantedProcesses/actions?query=is%3Asuccess).
+1. Download [`KillUnwantedProcesses.exe`](https://github.com/Aldaviva/KillUnwantedProcesses/releases/latest/download/KillUnwantedProcesses.exe) from the [latest release](https://github.com/Aldaviva/KillUnwantedProcesses/releases/latest/).
 1. Use Task Scheduler (`taskschd.msc`) to create a scheduled task that runs this program as often as you want.
     - I run it every 5 minutes.
 
 ## Programs
-- .NET Runtime Optimization Service
 - Acrobat Notification Service
 - AcroTray
 - Adobe Acrobat Updater
 - Adobe Collaboration Synchronizer
+- Adobe Crash Processor
 - Adobe Creative Cloud Experience
 - Adobe Creative Cloud Libraries
 - Adobe Desktop Service
-- Adobe Flash Updater
+- Adobe Extensions Service
 - Adobe Genuine Monitor Service
 - Adobe Genuine Software Integrity Service
 - Adobe Notification Client
 - Adobe Sync
 - Adobe Update Service
+- Autodesk Access Service
 - Autodesk Licensing Service
 - FlexNet Licensing Service
-- GPG Agent
-- Logitech G Hub
+- Logitech G Hub System Tray
 - Nvidia Control Panel
 - Office Document Cache
+- Search App Edge WebView
 - Virtual CloneDrive
 - Visual Studio Compiler
 - VMware Authorization Service
 - VMware DHCP Service
 - VMware NAT Service
-- VMware USB Arbitration Service
 - VMware Workstation Server
-- Windows Image Acquisition
 
 *Some of these are only killed if certain conditions are met, others are killed whenever they're running or installed.*

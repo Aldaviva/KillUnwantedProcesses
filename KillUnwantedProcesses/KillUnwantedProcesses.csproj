@@ -109,13 +109,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="app.manifest" />
+    <None Include="packages.lock.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dynamite.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ILRepack.Lib.MSBuild.Task">
-      <Version>2.0.34.2</Version>
+      <Version>2.0.40</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
