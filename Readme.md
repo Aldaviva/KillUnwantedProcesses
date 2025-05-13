@@ -21,9 +21,9 @@ This is a program which finds specific running processes on your computer and ki
 - [.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework)
 
 ## Installation
-1. Download [`KillUnwantedProcesses.exe`](https://github.com/Aldaviva/KillUnwantedProcesses/releases/latest/download/KillUnwantedProcesses.exe) from the [latest release](https://github.com/Aldaviva/KillUnwantedProcesses/releases/latest/).
-1. Use Task Scheduler (`taskschd.msc`) to create a scheduled task that runs this program as often as you want.
-    - I run it every 5 minutes.
+1. Download and extract [`KillUnwantedProcesses.zip`](https://github.com/Aldaviva/KillUnwantedProcesses/releases/latest/download/KillUnwantedProcesses.zip) from the [latest release](https://github.com/Aldaviva/KillUnwantedProcesses/releases/latest/).
+1. Use Task Scheduler (`taskschd.msc`) to create a scheduled task that runs `KillUnwantedProcesses.exe` as often as you want.
+    - I run it every 10 minutes.
 
 ## Programs
 - Acrobat Notification Service

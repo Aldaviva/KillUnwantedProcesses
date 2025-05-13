@@ -33,5 +33,8 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.ProjectName }}.exe
-        path: ${{ env.ProjectName }}\bin\Release\*.exe
+        path: |
+          ${{ env.ProjectName }}\bin\Release\*.exe
+          ${{ env.ProjectName }}\bin\Release\*.exe.config
+          ${{ env.ProjectName }}\bin\Release\*.dll
         if-no-files-found: error
