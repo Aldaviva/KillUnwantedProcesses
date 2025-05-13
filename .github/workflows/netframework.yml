@@ -22,7 +22,7 @@ jobs:
 
     # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v2
 
     # Create the executable by restoring NuGet packages and building the EXE (which uses an ILRepack build task to inline dependencies into a single EXE)
     - name: Restore and Build
